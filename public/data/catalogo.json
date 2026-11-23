@@ -1,0 +1,211 @@
+{
+  "categorias": [
+    {
+      "id": "uniformes-profissionais",
+      "nome": "Uniformes profissionais",
+      "mais": false,
+      "subcategorias": [
+        {
+          "id": "cozinha-e-restauracao",
+          "nome": "Cozinha e restauração"
+        },
+        {
+          "id": "seguranca",
+          "nome": "Segurança"
+        },
+        {
+          "id": "saude-e-enfermagem",
+          "nome": "Saúde e enfermagem"
+        },
+        {
+          "id": "industrial-e-proteccao",
+          "nome": "Industrial e protecção"
+        },
+        {
+          "id": "administrativo-e-comercial",
+          "nome": "Administrativo e comercial"
+        }
+      ]
+    },
+    {
+      "id": "escolar-e-institucional",
+      "nome": "Escolar e institucional",
+      "mais": false,
+      "subcategorias": [
+        {
+          "id": "fardas-escolares",
+          "nome": "Fardas escolares"
+        },
+        {
+          "id": "batas-infantis",
+          "nome": "Batas infantis"
+        },
+        {
+          "id": "instituicoes",
+          "nome": "Instituições"
+        }
+      ]
+    },
+    {
+      "id": "vestuario-corporativo",
+      "nome": "Vestuário corporativo",
+      "mais": false,
+      "subcategorias": [
+        {
+          "id": "polos-e-camisas",
+          "nome": "Polos e camisas"
+        },
+        {
+          "id": "casacos-e-coletes",
+          "nome": "Casacos e coletes"
+        },
+        {
+          "id": "promocional",
+          "nome": "Promocional"
+        }
+      ]
+    },
+    {
+      "id": "desportivo",
+      "nome": "Desportivo",
+      "mais": false,
+      "subcategorias": [
+        {
+          "id": "camisolas-e-equipamentos",
+          "nome": "Camisolas e equipamentos"
+        },
+        {
+          "id": "fatos-de-treino",
+          "nome": "Fatos de treino"
+        },
+        {
+          "id": "equipas-e-clubes",
+          "nome": "Equipas e clubes"
+        }
+      ]
+    },
+    {
+      "id": "moda-e-gala",
+      "nome": "Moda e gala",
+      "mais": false,
+      "subcategorias": [
+        {
+          "id": "africano",
+          "nome": "Africano"
+        },
+        {
+          "id": "formal",
+          "nome": "Formal"
+        },
+        {
+          "id": "festa",
+          "nome": "Festa"
+        },
+        {
+          "id": "conjuntos-por-encomenda-e-aluguer",
+          "nome": "Conjuntos por encomenda e aluguer"
+        },
+        {
+          "id": "pulseiras-aneis-e-cordoes",
+          "nome": "Pulseiras, anéis e cordões"
+        }
+      ]
+    },
+    {
+      "id": "vestuario-geral",
+      "nome": "Vestuário geral",
+      "mais": true,
+      "subcategorias": [
+        {
+          "id": "t-shirts-e-sweatshirts",
+          "nome": "T-shirts e sweatshirts"
+        },
+        {
+          "id": "calcas-e-calcoes",
+          "nome": "Calças e calções"
+        },
+        {
+          "id": "saias-vestidos-e-blusas",
+          "nome": "Saias, vestidos e blusas"
+        },
+        {
+          "id": "bones-e-chapeus",
+          "nome": "Bonés e chapéus"
+        },
+        {
+          "id": "recuperacao-e-arranjos",
+          "nome": "Recuperação e arranjos"
+        }
+      ]
+    }
+  ],
+  "fotos": [],
+  "obras": [
+    {
+      "id": 1,
+      "nome": "Nome da obra 1",
+      "marca": "Marca",
+      "imagem": "",
+      "descricao": ""
+    },
+    {
+      "id": 2,
+      "nome": "Nome da obra 2",
+      "marca": "Marca",
+      "imagem": "",
+      "descricao": ""
+    },
+    {
+      "id": 3,
+      "nome": "Nome da obra 3",
+      "marca": "Marca",
+      "imagem": "",
+      "descricao": ""
+    },
+    {
+      "id": 4,
+      "nome": "Nome da obra 4",
+      "marca": "Marca",
+      "imagem": "",
+      "descricao": ""
+    }
+  ],
+  "clientes": [
+    {
+      "id": 1,
+      "nome": "Instituto Politécnico Maravilha"
+    },
+    {
+      "id": 2,
+      "nome": "Colégio Pitágora"
+    },
+    {
+      "id": 3,
+      "nome": "Colégio 11 de Novembro"
+    },
+    {
+      "id": 4,
+      "nome": "Instituto Técnico de Saúde Privado Canácio-Kopitule"
+    },
+    {
+      "id": 5,
+      "nome": "N.G.S. Vombilados"
+    },
+    {
+      "id": 6,
+      "nome": "Nyamba"
+    },
+    {
+      "id": 7,
+      "nome": "Kuc-Lessa"
+    },
+    {
+      "id": 8,
+      "nome": "Suloil Transportes, Lda."
+    },
+    {
+      "id": 9,
+      "nome": "T.P. Okupanga"
+    }
+  ]
+}

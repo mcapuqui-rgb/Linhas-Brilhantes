@@ -5,127 +5,23 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Linhas Brilhantes | Uniformes e vestuário personalizado em Lubango</title>
 <meta name="description" content="Confecção, personalização e fornecimento de uniformes profissionais e vestuário corporativo no Lubango, com entregas em todas as províncias de Angola.">
+<link rel="icon" href="img/simbolo_LB.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Hanken+Grotesk:wght@400;500;600&display=swap" rel="stylesheet">
-<style>
-:root{--navy:#10213C;--gold:#C49A50;--bg:#FBFAF7;--paper:#FFFFFF;--text:#252A32;--muted:#68707d;--line:#e6e1d5;--head:#10213C;--dark:#10213C;
-box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b121e;--paper:#111b2c;--text:#e9e7e2;--muted:#9ba4b2;--line:#25324a;--head:#f1ece0;--dark:#080e18}}
-:root[data-theme="dark"]{--bg:#0b121e;--paper:#111b2c;--text:#e9e7e2;--muted:#9ba4b2;--line:#25324a;--head:#f1ece0;--dark:#080e18}
-*,*::before,*::after{box-sizing:inherit}
-html{scroll-behavior:smooth;scroll-padding-top:calc(80px + env(safe-area-inset-top,0px));height:auto}
-body{margin:0;background:var(--bg);color:var(--text);font:400 1.02rem/1.7 "Hanken Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
-h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;color:var(--head);margin:0;letter-spacing:-.01em}
-h2{font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.05;margin-bottom:.5em}
-h3{font-size:1.5rem;line-height:1.2}
-a{color:inherit}
-.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
-section{padding:112px 0}
-.lead{font-size:1.15rem;color:var(--muted);max-width:56ch}
-.rule{width:56px;height:1px;background:var(--gold);margin:0 0 28px;border:0}
-body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
-.logo{font:600 1.55rem "Cormorant Garamond",serif;text-decoration:none;color:var(--head)}
-.logo i{color:var(--gold);font-style:normal}
-nav{display:flex;gap:18px;align-items:center}
-nav a{text-decoration:none;font-size:.92rem;color:var(--muted);transition:color .2s}
-nav a:hover{color:var(--head)}
-.btn{display:inline-block;background:var(--navy);color:#fff;font:500 .95rem "Hanken Grotesk",sans-serif;padding:14px 28px;border-radius:2px;text-decoration:none;border:1px solid var(--navy);cursor:pointer;transition:background .2s,color .2s}
-.btn:hover{background:transparent;color:var(--head)}
-.btn.gold{background:var(--gold);border-color:var(--gold);color:#10213C}
-.btn.gold:hover{background:transparent;color:var(--gold)}
-nav .btn{padding:10px 20px;color:#fff}
-nav .btn:hover{color:var(--head)}
-#menu{display:none;background:none;border:1px solid var(--line);color:var(--head);border-radius:2px;padding:8px 14px;font:inherit}
-.hero{background:var(--dark);color:#fff;padding:140px 0 120px;position:relative;overflow:hidden}
-.hero h1{color:#fff;font-size:clamp(3rem,9vw,6.6rem);line-height:.98;max-width:12ch;font-weight:500}
-.hero p{max-width:50ch;color:#b9c0cd;font-size:1.15rem;margin:32px 0 40px}
-.hero .acts{display:flex;gap:14px;flex-wrap:wrap}
-.hero .btn:not(.gold){background:transparent;border-color:rgba(255,255,255,.35);color:#fff}
-.hero .btn:not(.gold):hover{border-color:var(--gold);color:var(--gold)}
-.thread{position:absolute;left:0;right:0;bottom:44px;width:100%;height:90px;pointer-events:none}
-.thread path{fill:none;stroke:var(--gold);stroke-width:1.5;stroke-dasharray:3 9;stroke-linecap:round;animation:stitch 14s linear infinite}
-@keyframes stitch{to{stroke-dashoffset:-240}}
-@media (prefers-reduced-motion:reduce){.thread path{animation:none}html{scroll-behavior:auto}}
-.split{display:grid;gap:72px;grid-template-columns:1fr 1.2fr;align-items:start}
-.pillars{display:grid;gap:0}
-.pillars div{padding:26px 0;border-top:1px solid var(--line)}
-.pillars div:last-child{border-bottom:1px solid var(--line)}
-.pillars p{margin:8px 0 0;color:var(--muted)}
-.index{margin-top:56px;border-bottom:1px solid var(--line)}
-.row{display:grid;grid-template-columns:1fr 1.5fr auto;gap:32px;align-items:baseline;padding:28px 0;border-top:1px solid var(--line);transition:padding-left .25s}
-.row:hover{padding-left:12px}
-.row p{margin:0;color:var(--muted);font-size:.97rem}
-.row a{font-size:.9rem;color:var(--gold);text-decoration:none;font-weight:500}
-.paper{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.steps{list-style:none;margin:0;padding:0;counter-reset:s}
-.steps li{counter-increment:s;display:grid;grid-template-columns:48px 1fr;padding:22px 0;border-top:1px solid var(--line)}
-.steps li:last-child{border-bottom:1px solid var(--line)}
-.steps li::before{content:counter(s,decimal-leading-zero);font:500 1.3rem "Cormorant Garamond",serif;color:var(--gold)}
-.steps span{color:var(--muted)}
-.gal{display:grid;gap:16px;grid-template-columns:repeat(4,1fr);margin-top:48px}
-.tile{aspect-ratio:3/4;border:1px solid var(--line);background:var(--paper);display:flex;align-items:flex-end;padding:18px;color:var(--muted);font-size:.9rem}
-.tile:nth-child(odd){background:var(--dark);color:#b9c0cd;border-color:var(--dark)}
-.names{display:grid;grid-template-columns:repeat(3,1fr);margin-top:48px;border-left:1px solid var(--line)}
-.names span{padding:22px 24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);border-top:1px solid var(--line);margin-top:-1px;font-family:"Cormorant Garamond",serif;font-size:1.3rem;color:var(--head)}
-.fl{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}.fl button{font:inherit;font-size:.88rem;padding:8px 16px;border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:99px;cursor:pointer}.fl button.on{background:var(--gold);border-color:var(--gold);color:#10213C}.pg{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));margin-top:24px}.pg .tile small{display:block;color:var(--gold)}
-.note{font-size:.88rem;color:var(--muted);margin-top:28px;max-width:64ch}
-.cover{background:var(--dark);color:#fff}
-.cover h2{color:#fff}
-.cover .lead{color:#b9c0cd}
-form{display:grid;gap:24px 28px;grid-template-columns:1fr 1fr;margin-top:48px}
-form .full{grid-column:1/-1}
-label{display:grid;gap:6px;font-size:.85rem;color:var(--muted)}
-input,select,textarea{font:inherit;font-size:1rem;padding:12px 0;border:0;border-bottom:1px solid var(--line);border-radius:0;background:transparent;color:var(--text)}
-input:focus,select:focus,textarea:focus{outline:0;border-bottom-color:var(--gold)}
-select option{background:var(--paper);color:var(--text)}
-.btn:focus-visible,a:focus-visible,#menu:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
-.err{color:#c0392b;font-size:.82rem;min-height:1em}
-#ok{display:none;padding:20px;border:1px solid var(--gold);margin-top:24px}
-.contact{display:grid;gap:56px;grid-template-columns:repeat(3,1fr);margin-top:48px}
-.contact h3{font-size:1.2rem;margin-bottom:8px}
-.contact p{margin:0;color:var(--muted)}
-.contact a{text-decoration:none;color:var(--text)}
-footer{background:var(--dark);color:#8e97a6;padding:36px 0 calc(36px + env(safe-area-inset-bottom,0px));font-size:.88rem}
-.wa{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));background:var(--gold);color:#10213C;font-weight:600;font-size:.9rem;padding:13px 22px;border-radius:99px;text-decoration:none;z-index:25;box-shadow:0 6px 24px rgba(16,33,60,.25)}
-@media (max-width:860px){
-section{padding:76px 0}
-.hero{padding:130px 0 110px}
-#menu{display:block}
-nav{display:none;position:absolute;top:72px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;padding:20px 24px 28px;gap:16px}
-nav.open{display:flex}
-.split,.contact{grid-template-columns:1fr;gap:36px}
-.row{grid-template-columns:1fr;gap:6px}
-.gal{grid-template-columns:1fr 1fr}
-.names{grid-template-columns:1fr}
-form{grid-template-columns:1fr}
-}
-@media (prefers-color-scheme:light){
-:root{--bg:#FBFAF7;--paper:#FFFFFF;--text:#252A32;--muted:#68707d;--line:#e6e1d5;--head:#10213C;--navy:#10213C;--dark:#F1ECE0}
-.hero,.cover,footer{color:#252A32}
-.hero h1,.cover h2{color:#10213C}
-.hero p,.cover .lead,footer{color:#5d6572}
-.hero .btn:not(.gold),.cover .btn:not(.gold){border-color:#10213C!important;color:#10213C!important}
-.tile:nth-child(odd){color:#5d6572}
-}
-.thread.top{bottom:auto;top:24px}.thread.top path{animation-direction:reverse}
-#sc,#nd{position:absolute;left:0;top:0;width:28px;height:28px;pointer-events:none;z-index:2;visibility:hidden;will-change:transform}
-.mq{overflow:hidden;margin-top:48px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
-.trk{display:flex;width:max-content;padding:22px 0;animation:mq 46s linear infinite}
-.trk.r{animation-direction:reverse;border-top:1px dashed var(--line)}
-.mq:hover .trk{animation-play-state:paused}
-.trk span{font:500 clamp(1.5rem,3.4vw,2.4rem) "Cormorant Garamond",Georgia,serif;color:var(--head);white-space:nowrap;display:flex;align-items:center;gap:28px;padding-left:28px;transition:color .25s}
-.trk span::after{content:"";width:34px;border-top:2px dashed var(--gold)}
-.trk span:hover{color:var(--gold)}
-@keyframes mq{to{transform:translateX(-50%)}}
-</style>
+<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <header>
 <div class="wrap">
-<a class="logo" href="#inicio">Linhas<i>.</i>Brilhantes</a>
+<a class="nome" href="#inicio">
+  <img src="img/logo-tema-claro.svg"
+     class="logo-tema-claro" alt="Linhas Brilhantes">
+
+<img src="img/logo-tema-escuro.svg"
+     class="logo-tema-escuro" alt="Linhas Brilhantes">
+</a>
+
 <button id="menu" aria-expanded="false" aria-controls="nav">Menu</button>
 <nav id="nav">
 <a href="#sobre">Sobre</a><a href="#produtos">Produtos</a><a href="#producao">Produção</a><a href="#moda">Moda e gala</a><a href="#galeria-de-arte">Galeria de arte</a><a href="#portfolio">Portefólio</a><a href="#clientes">Clientes</a><a href="#contactos">Contactos</a>
@@ -200,7 +96,7 @@ form{grid-template-columns:1fr}
 <hr class="rule">
 <h2>Moda e gala.</h2>
 <p class="lead">Conjuntos de moda e de gala, com ar africano ou mais formais, para festas e ocasiões especiais. Batina, pulseira, anel e/ou cordão. Composição variável ou personalizada ao gosto do cliente. Compra ou aluguer.</p>
-<p class="note">Descrição preliminar. Peças, materiais e prazos a confirmar pela empresa.</p>
+<p class="note">Linha já em venda e em expansão, com novos serviços em breve.</p>
 <p style="margin-top:28px;display:flex;gap:12px;flex-wrap:wrap;align-items:center"><a class="btn gold" target="_blank" rel="noopener" href="https://wa.me/244930209216?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20personaliza%C3%A7%C3%A3o%20de%20conjuntos%20de%20moda%20e%20gala%20(ar%20africano%20ou%20formal%2C%20com%20batina%2C%20pulseira%2C%20anel%20e%2Fou%20cord%C3%A3o).%20Podem%20ajudar-me%3F">Perguntar sobre personalização</a><a class="btn" style="background:transparent;border-color:rgba(255,255,255,.35);color:#fff" href="#orcamento">Encomendar uma peça</a><a href="#galeria-de-arte" style="color:var(--gold)">Ver galeria de arte</a></p>
 </div>
 <div class="gal" style="grid-template-columns:1fr 1fr;margin-top:0">
@@ -231,9 +127,7 @@ form{grid-template-columns:1fr}
 <div class="wrap">
 <hr class="rule">
 <h2>Clientes e parceiros</h2>
-<div class="names" id="nm">
-<span>Instituto Politécnico Maravilha</span><span>Colégio Pitágora</span><span>Colégio 11 de Novembro</span><span>Instituto Técnico de Saúde Privado Canácio-Kopitule</span><span>N.G.S. Vombilados</span><span>Nyamba</span><span>Kuc-Lessa</span><span>Suloil Transportes, Lda.</span><span>T.P. Okupanga</span>
-</div>
+<div class="names" id="nm"></div>
 <p class="note">Lista a publicar só após verificação e autorização de cada organização.</p>
 </div>
 </section>
@@ -289,92 +183,6 @@ form{grid-template-columns:1fr}
 <footer><div class="wrap">© 2026 Linhas Brilhantes · Zona Industrial, Lubango, Huíla, Angola</div></footer>
 <a class="wa" href="https://wa.me/244930209216" aria-label="Falar no WhatsApp">WhatsApp</a>
 
-<script>
-var TAX=[{n:"Uniformes profissionais",subs:["Cozinha e restauração","Segurança","Saúde e enfermagem","Industrial e protecção","Administrativo e comercial"]},
-{n:"Escolar e institucional",subs:["Fardas escolares","Batas infantis","Instituições"]},
-{n:"Vestuário corporativo",subs:["Polos e camisas","Casacos e coletes","Promocional"]},
-{n:"Desportivo",subs:["Camisolas e equipamentos","Fatos de treino","Equipas e clubes"]},
-{n:"Moda e gala",subs:["Africano","Formal","Festa","Conjuntos por encomenda e aluguer","Pulseiras, anéis e cordões"]},
-{n:"Vestuário geral",subs:["T-shirts e sweatshirts","Calças e calções","Saias, vestidos e blusas","Bonés e chapéus","Recuperação e arranjos"],more:1}];
-var CATS=TAX.map(function(t){return [t.n,t.subs.join(", ")+(t.more?", e muito mais":"")]});var OLD=[["Vestuário geral","T-shirts, polos, camisas, calças, calções, casacos, sweatshirts, saias, vestidos, blusas"],
-["Vestuário personalizado","Peças com logótipo, estampagem ou bordado, e peças por encomenda"],
-["Uniformes profissionais","Fardas industriais, administrativas, comerciais, de trabalho e institucionais"],
-["Vestuário corporativo","Uniformes empresariais, camisas e polos corporativos, coletes, vestuário promocional"],
-["Vestuário de saúde","Jalecos, batas clínicas, uniformes hospitalares, de enfermagem e de laboratório"],
-["Equipamentos de protecção","Coletes reflectores e multi-bolso, uniformes de segurança, alta visibilidade"],
-["Vestuário desportivo","Camisolas, equipamentos de futebol, fatos de treino, calções"],
-["Moda e gala","Roupas e acessórios de moda e de gala, peças exclusivas por encomenda"],
-["Acessórios","Bonés, chapéus e artigos promocionais personalizados"]];
-var PROV=["Bengo","Benguela","Bié","Cabinda","Cuando","Cubango","Cuanza Norte","Cuanza Sul","Cunene","Huambo","Huíla","Icolo e Bengo","Luanda","Lunda Norte","Lunda Sul","Malanje","Moxico","Moxico Leste","Namibe","Uíge","Zaire"];
-var cats=document.getElementById("cats"),cs=document.getElementById("catsel"),ps=document.querySelector("[name=prov]");
-CATS.forEach(function(c){
- var d=document.createElement("div");d.className="row";
- d.innerHTML="<h3>"+c[0]+"</h3><p>"+c[1]+"</p><a href='#orcamento' data-c='"+c[0]+"'>Pedir orçamento</a>";
- cats.appendChild(d);cs.add(new Option(c[0],c[0]));
-});
-PROV.forEach(function(p){ps.add(new Option(p,p))});
-cats.addEventListener("click",function(e){var c=e.target.getAttribute&&e.target.getAttribute("data-c");if(c)cs.value=c});
-var ART=[{n:"Nome da obra 1",m:"Marca"},{n:"Nome da obra 2",m:"Marca"},{n:"Nome da obra 3",m:"Marca"},{n:"Nome da obra 4",m:"Marca"}];
-document.getElementById("arte").innerHTML=ART.map(function(o){
- var t="Olá! Tenho interesse na obra “"+o.n+"” (marca "+o.m+") da galeria de arte. Podem informar-me sobre a compra ou o aluguer?";
- return "<div class='tile'><span><b style='font:500 1.3rem \"Cormorant Garamond\",serif;display:block'>"+o.n+"</b><small>"+o.m+"</small><a target='_blank' rel='noopener' href='https://wa.me/244930209216?text="+encodeURIComponent(t)+"' style='display:block;margin-top:10px;color:var(--gold);font-size:.85rem'>Perguntar sobre esta obra</a></span></div>"}).join("");
-var pf=document.getElementById("pf"),cur=null,sub=null;
-function draw(){
- var h="<div class='fl'><button data-k='-1' class='"+(cur===null?"on":"")+"'>Todos</button>";
- TAX.forEach(function(t,i){h+="<button data-k='"+i+"' class='"+(cur===i?"on":"")+"'>"+t.n+"</button>"});
- h+="</div>";
- if(cur!==null){h+="<div class='fl'><button data-s='-1' class='"+(sub===null?"on":"")+"'>Todas</button>";TAX[cur].subs.forEach(function(s,j){h+="<button data-s='"+j+"' class='"+(sub===j?"on":"")+"'>"+s+"</button>"});h+="</div>"}
- h+="<div class='pg'>";
- TAX.forEach(function(t,i){if(cur!==null&&cur!==i)return;t.subs.forEach(function(s,j){if(sub!==null&&sub!==j)return;h+="<div class='tile'><span>"+s+"<small>"+t.n+"</small></span></div>"})});
- pf.innerHTML=h+"</div>";
-}
-pf.addEventListener("click",function(e){var b=e.target;if(b.tagName!=="BUTTON")return;
- if(b.hasAttribute("data-k")){var k=+b.getAttribute("data-k");cur=k<0?null:k;sub=null}
- else{var s=+b.getAttribute("data-s");sub=s<0?null:s}
- draw()});
-draw();
-var tps=document.querySelectorAll(".thread path"),sc=document.getElementById("sc"),nd=document.getElementById("nd"),hr=document.getElementById("inicio");
-if(tps.length>1&&sc&&nd&&!matchMedia("(prefers-reduced-motion:reduce)").matches){
- var Ls=[tps[0].getTotalLength(),tps[1].getTotalLength()],t0=null;
- var place=function(el,path,L,p,flip){
-  var m=path.getScreenCTM(),h=hr.getBoundingClientRect(),q=flip?1-p:p,d=flip?-3:3;
-  var a=path.getPointAtLength(q*L).matrixTransform(m),b=path.getPointAtLength(Math.min(L,Math.max(0,q*L+d))).matrixTransform(m);
-  var g=Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI;
-  el.style.transform="translate("+(a.x-h.left-14)+"px,"+(a.y-h.top-14)+"px) rotate("+g+"deg)"+(flip?" scaleY(-1)":"");
-  el.style.visibility="visible"};
- requestAnimationFrame(function step(ts){
-  if(t0===null)t0=ts;
-  var c=((ts-t0)/16000)%1;
-  place(sc,tps[0],Ls[0],c,false);place(nd,tps[1],Ls[1],c,true);
-  requestAnimationFrame(step)});
-}
-var nmBox=document.getElementById("nm");
-if(nmBox&&!matchMedia("(prefers-reduced-motion:reduce)").matches){
- var N=[].map.call(nmBox.children,function(e){return e.textContent});
- var mk=function(list,cls,dur){
-  var h=list.concat(list).map(function(t,i){return "<span"+(i>=list.length?" aria-hidden='true'":"")+">"+t+"</span>"}).join("");
-  return "<div class='trk "+cls+"' style='animation-duration:"+dur+"s'>"+h+"</div>"};
- nmBox.className="mq";nmBox.innerHTML=mk(N,"",46)+mk(N.slice().reverse(),"r",58);
-}
-var nav=document.getElementById("nav"),mb=document.getElementById("menu");
-mb.onclick=function(){var o=nav.classList.toggle("open");mb.setAttribute("aria-expanded",o)};
-nav.onclick=function(e){if(e.target.tagName==="A"){nav.classList.remove("open");mb.setAttribute("aria-expanded","false")}};
-document.getElementById("qf").addEventListener("submit",function(e){
- e.preventDefault();var f=e.target,bad=false;
- if(f.site.value)return;
- f.querySelectorAll("[required]").forEach(function(i){
-  var s=i.parentNode.querySelector(".err"),m="";
-  if(!i.value.trim())m="Campo obrigatório.";
-  else if(i.name==="tel"&&!/^[+\d\s]{9,15}$/.test(i.value.trim()))m="Indique um número de telefone válido.";
-  else if(i.name==="qtd"&&+i.value<1)m="Indique uma quantidade de 1 ou mais.";
-  s.textContent=m;if(m)bad=true;
- });
- if(bad){f.querySelector(".err:not(:empty)").parentNode.querySelector("input,select").focus();return}
- var v=function(n){return f[n].value.trim()||"-"};
- var t="Pedido de orçamento - Linhas Brilhantes\nNome: "+v("nome")+"\nEmpresa: "+v("empresa")+"\nTelefone: "+v("tel")+"\nEmail: "+v("email")+"\nLocal: "+v("mun")+", "+v("prov")+"\nModalidade: "+f.mod.value+"\nEntrega: "+f.ent.value+"\nCategoria: "+v("cat")+"\nQuantidade: "+v("qtd")+"\nTamanhos/cores: "+v("tc")+"\nPersonalização: "+v("pers")+"\nNotas: "+v("desc");
- document.getElementById("ok").style.display="block";
- window.open("https://wa.me/244930209216?text="+encodeURIComponent(t),"_blank","noopener");
-});
-</script>
+<script type="module" src="js/main.js"></script>
 </body>
 </html>

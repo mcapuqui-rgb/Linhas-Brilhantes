@@ -1,0 +1,17 @@
+/* Ponto de entrada: a ordem dos imports é a ordem da cascata. */
+@import "tokens.css";
+@import "base.css";
+@import "buttons.css";
+@import "header.css";
+@import "hero.css";
+@import "layout.css";
+@import "about.css";
+@import "catalogo.css";
+@import "producao.css";
+@import "galeria.css";
+@import "clientes.css";
+@import "orcamento.css";
+@import "contactos.css";
+@import "footer.css";
+@import "theme-light.css";
+@import "responsive.css";

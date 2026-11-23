@@ -1,0 +1,5 @@
+/* Variáveis de cor e modo escuro */
+:root{--navy:#10213C;--gold:#C49A50;--bg:#FBFAF7;--paper:#FFFFFF;--text:#252A32;--muted:#68707d;--line:#e6e1d5;--head:#10213C;--dark:#10213C;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b121e;--paper:#111b2c;--text:#e9e7e2;--muted:#9ba4b2;--line:#25324a;--head:#f1ece0;--dark:#080e18}}
+:root[data-theme="dark"]{--bg:#0b121e;--paper:#111b2c;--text:#e9e7e2;--muted:#9ba4b2;--line:#25324a;--head:#f1ece0;--dark:#080e18}

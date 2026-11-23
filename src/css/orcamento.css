@@ -1,0 +1,9 @@
+/* Formulário de orçamento */
+form{display:grid;gap:24px 28px;grid-template-columns:1fr 1fr;margin-top:48px}
+form .full{grid-column:1/-1}
+label{display:grid;gap:6px;font-size:.85rem;color:var(--muted)}
+input,select,textarea{font:inherit;font-size:1rem;padding:12px 0;border:0;border-bottom:1px solid var(--line);border-radius:0;background:transparent;color:var(--text)}
+input:focus,select:focus,textarea:focus{outline:0;border-bottom-color:var(--gold)}
+select option{background:var(--paper);color:var(--text)}
+.err{color:#c0392b;font-size:.82rem;min-height:1em}
+#ok{display:none;padding:20px;border:1px solid var(--gold);margin-top:24px}
