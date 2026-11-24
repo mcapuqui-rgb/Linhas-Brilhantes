@@ -1,8 +1,12 @@
-
 /* =========================================================
-   CSS PRINCIPAL
+   CSS PRINCIPAL (versão corrigida)
    Identidade visual: Azul-marinho, dourado e creme
-   Temas: Claro, escuro e automático
+   Temas: claro, escuro e automático
+
+   Princípio: o tema claro é o padrão em :root. Os temas
+   escuros só redefinem variáveis. Nenhum componente tem
+   regras próprias por tema, o que evita conflitos de
+   especificidade entre o claro automático e o manual.
    ========================================================= */
 
 
@@ -10,17 +14,57 @@
    1. VARIÁVEIS E TEMAS
    ========================================================= */
 
+/* Tema claro (padrão) */
 :root {
-  --navy: #10213C;
+  --navy: hsl(217, 58%, 15%);
   --gold: #C49A50;
+  --gold-text: #8A6420;          /* dourado escuro, legível em texto sobre creme */
 
   --bg: #FBFAF7;
   --paper: #FFFFFF;
   --text: #252A32;
   --muted: #68707D;
   --line: #E6E1D5;
+  --field-line: #8F8978;         /* linha dos campos do formulário (contraste ≥ 3:1) */
   --head: #10213C;
-  --dark: #10213C;
+
+  /* Superfícies de destaque (hero, cover, rodapé, tiles ímpares) */
+  --dark: #F1ECE0;
+  --on-dark: #10213C;            /* títulos sobre a superfície */
+  --on-dark-text: #252A32;       /* texto corrente */
+  --on-dark-muted: #5D6572;      /* texto secundário */
+  --tile-odd-border: var(--line);
+
+  /* Botão fantasma (hero e cover) */
+  --ghost-border: #10213C;
+  --ghost-color: #10213C;
+  --ghost-hover: var(--gold-text);
+
+  /* Fundo da página (imagem sob um véu creme) */
+  --page-img:
+    linear-gradient(rgba(251, 250, 247, .95), rgba(251, 250, 247, .95)),
+    url("../img/Vestimenta.png");
+  --page-img-sm:
+    linear-gradient(rgba(251, 250, 247, .97), rgba(251, 250, 247, .97)),
+    url("../img/Vestimenta.png");
+
+  /* Hero */
+  --hero-img: url(../img/Vestimenta.png);
+  --hero-overlay: linear-gradient(
+    90deg,
+    rgb(255, 255, 255),
+    rgba(238, 242, 250, 0)
+  );
+  /* Em ecrãs estreitos o texto ocupa a largura toda: véu uniforme */
+  --hero-overlay-sm: linear-gradient(
+    rgba(255, 255, 255, .88),
+    rgba(255, 255, 255, .72)
+  );
+
+  /* Parágrafo do hero */
+  --hero-p-bg: rgba(255, 255, 255, .47);
+  --hero-p-color: #10213C;
+  --hero-p-shadow: 0 0 10px rgba(255, 255, 255, .84);
 
   box-sizing: border-box;
 
@@ -34,13 +78,47 @@
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]):not([data-theme="dark"]) {
+    --gold-text: #C49A50;
+
     --bg: #0B121E;
     --paper: #111B2C;
     --text: #E9E7E2;
     --muted: #9BA4B2;
     --line: #25324A;
+    --field-line: #25324A;
     --head: #F1ECE0;
+
     --dark: #080E18;
+    --on-dark: #FFFFFF;
+    --on-dark-text: #FFFFFF;
+    --on-dark-muted: #B9C0CD;
+    --tile-odd-border: #080E18;
+
+    --ghost-border: rgba(255, 255, 255, .35);
+    --ghost-color: #FFFFFF;
+    --ghost-hover: #C49A50;
+
+    --page-img:
+      linear-gradient(#10213C, rgba(0, 0, 0, .863)),
+      url("../img/Vestimenta.png");
+    --page-img-sm:
+      linear-gradient(rgba(16, 33, 60, .96), rgba(0, 0, 0, .93)),
+      url("../img/Vestimenta.png");
+
+    --hero-img: url(../img/Vestimenta.png);
+    --hero-overlay: linear-gradient(
+      90deg,
+      rgb(0, 0, 0),
+      rgba(11, 18, 30, 0.13)
+    );
+    --hero-overlay-sm: linear-gradient(
+      rgba(0, 0, 0, .7),
+      rgba(11, 18, 30, .45)
+    );
+
+    --hero-p-bg: transparent;
+    --hero-p-color: #FFFFFF;
+    --hero-p-shadow: none;
 
     color-scheme: dark;
   }
@@ -49,28 +127,56 @@
 /* Tema escuro manual */
 
 :root[data-theme="dark"] {
+  --gold-text: #C49A50;
+
   --bg: #0B121E;
   --paper: #111B2C;
   --text: #E9E7E2;
   --muted: #9BA4B2;
   --line: #25324A;
+  --field-line: #25324A;
   --head: #F1ECE0;
+
   --dark: #080E18;
+  --on-dark: #FFFFFF;
+  --on-dark-text: #FFFFFF;
+  --on-dark-muted: #B9C0CD;
+  --tile-odd-border: #080E18;
+
+  --ghost-border: rgba(255, 255, 255, .35);
+  --ghost-color: #FFFFFF;
+  --ghost-hover: #C49A50;
+
+  --page-img:
+    linear-gradient(#10213C, rgba(0, 0, 0, .863)),
+    url("../img/Vestimenta.png");
+  --page-img-sm:
+    linear-gradient(rgba(16, 33, 60, .96), rgba(0, 0, 0, .93)),
+    url("../img/Vestimenta.png");
+
+  --hero-img: url(../img/Vestimenta.png);
+  --hero-overlay: linear-gradient(
+    90deg,
+    rgb(0, 0, 0),
+    rgba(11, 18, 30, 0.13)
+  );
+  --hero-overlay-sm: linear-gradient(
+    rgba(0, 0, 0, .7),
+    rgba(11, 18, 30, .45)
+  );
+
+  --hero-p-bg: transparent;
+  --hero-p-color: #FFFFFF;
+  --hero-p-shadow: none;
 
   color-scheme: dark;
 }
 
-/* Tema claro manual */
+/* Tema claro manual: repõe os valores claros, caso o
+   sistema esteja em modo escuro. Não precisa de mais nada,
+   porque as regras escuras acima excluem data-theme="light". */
 
 :root[data-theme="light"] {
-  --bg: #FBFAF7;
-  --paper: #FFFFFF;
-  --text: #252A32;
-  --muted: #68707D;
-  --line: #E6E1D5;
-  --head: #10213C;
-  --dark: #10213C;
-
   color-scheme: light;
 }
 
@@ -122,15 +228,35 @@ html {
   height: auto;
   scroll-behavior: smooth;
 
+  background-color: var(--bg);
+
   scroll-padding-top: calc(
     80px + env(safe-area-inset-top, 0px)
   );
 }
 
+/* Imagem de fundo da página numa camada fixa atrás do conteúdo.
+   "background-attachment: fixed" não funciona no iOS e, com "scroll",
+   o "cover" esticaria a imagem pela altura total da página. */
+html::before {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  background-image: var(--page-img);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  pointer-events: none;
+}
+
 body {
   margin: 0;
 
-  background: var(--bg);
+  background: transparent;
   color: var(--text);
 
   font: 400 1.02rem/1.7
@@ -230,7 +356,7 @@ section {
    ========================================================= */
 
 :focus-visible {
-  outline: 2px solid var(--gold);
+  outline: 2px solid var(--gold-text);
   outline-offset: 4px;
 }
 
@@ -291,7 +417,7 @@ button {
 
 .btn.gold:hover {
   background: transparent;
-  color: var(--gold);
+  color: var(--gold-text);
 }
 
 nav .btn {
@@ -301,6 +427,24 @@ nav .btn {
 
 nav .btn:hover {
   color: var(--head);
+}
+
+/* Botão fantasma, partilhado por hero e cover.
+   Usa variáveis, por isso funciona nos dois temas e
+   o hover deixa de ser anulado por regras do tema. */
+
+.hero .btn:not(.gold),
+.cover .btn:not(.gold) {
+  background: transparent;
+
+  border-color: var(--ghost-border);
+  color: var(--ghost-color);
+}
+
+.hero .btn:not(.gold):hover,
+.cover .btn:not(.gold):hover {
+  border-color: var(--gold);
+  color: var(--ghost-hover);
 }
 
 
@@ -396,7 +540,7 @@ nav a:not(.btn)::after {
 }
 
 nav a:not(.btn):hover {
-  color: var(--gold);
+  color: var(--gold-text);
 }
 
 nav a:not(.btn):hover::after {
@@ -432,29 +576,28 @@ nav a:not(.btn):hover::after {
   background-color: var(--dark);
 
   background-image:
-    linear-gradient(
-      rgba(11, 18, 30, .644),
-      rgba(11, 18, 30, .788)
-    ),
-    url('../img/Pascoal.png');
+    var(--hero-overlay),
+    var(--hero-img);
 
   background-repeat: no-repeat, no-repeat;
 
+  /* Imagem de 1670x942 (16:9) nos dois temas: "cover" preenche o hero
+     em qualquer largura, sem faixas vazias nem tamanhos fixos. */
   background-size:
     cover,
-    min(450px, 48vw) auto;
+    cover;
 
   background-position:
     center,
-    right center;
+    center;
 
-  color: #FFFFFF;
+  color: var(--on-dark-text);
 }
 
 .hero h1 {
   max-width: 12ch;
 
-  color: #FFFFFF;
+  color: var(--on-dark);
 
   font-size: clamp(3rem, 9vw, 6.6rem);
   line-height: .98;
@@ -466,8 +609,14 @@ nav a:not(.btn):hover::after {
   max-width: 50ch;
 
   margin: 32px 0 40px;
+  padding: 14px 24px 14px 0;
 
-  color: #B9C0CD;
+  background: var(--hero-p-bg);
+  color: var(--hero-p-color);
+  box-shadow: var(--hero-p-shadow);
+
+  border-radius: 0 40px 40px 0;
+
   font-size: 1.15rem;
 }
 
@@ -475,18 +624,6 @@ nav a:not(.btn):hover::after {
   display: flex;
   flex-wrap: wrap;
   gap: 14px;
-}
-
-.hero .btn:not(.gold) {
-  background: transparent;
-
-  border-color: rgba(255, 255, 255, .35);
-  color: #FFFFFF;
-}
-
-.hero .btn:not(.gold):hover {
-  border-color: var(--gold);
-  color: var(--gold);
 }
 
 
@@ -593,15 +730,15 @@ form > * {
 
 .cover {
   background: var(--dark);
-  color: #FFFFFF;
+  color: var(--on-dark-text);
 }
 
 .cover h2 {
-  color: #FFFFFF;
+  color: var(--on-dark);
 }
 
 .cover .lead {
-  color: #B9C0CD;
+  color: var(--on-dark-muted);
 }
 
 
@@ -627,6 +764,11 @@ form > * {
 .pillars p {
   margin: 8px 0 0;
   color: var(--muted);
+}
+
+#sobre {
+  background-color: var(--dark);
+  color: var(--on-dark-text);
 }
 
 
@@ -671,7 +813,7 @@ form > * {
 .row a {
   font-size: .9rem;
 
-  color: var(--gold);
+  color: var(--gold-text);
   text-decoration: none;
   font-weight: 500;
 }
@@ -712,7 +854,7 @@ form > * {
     "Cormorant Garamond",
     serif;
 
-  color: var(--gold);
+  color: var(--gold-text);
 }
 
 .steps span {
@@ -757,9 +899,9 @@ form > * {
 .tile:nth-child(odd) {
   background: var(--dark);
 
-  color: #B9C0CD;
+  color: var(--on-dark-muted);
 
-  border-color: var(--dark);
+  border-color: var(--tile-odd-border);
 }
 
 figure.tile {
@@ -780,6 +922,8 @@ figure.tile {
   padding: 0;
 }
 
+/* Legenda sobre imagem: sempre texto branco sobre degradê azul-marinho,
+   em qualquer tema. */
 .tile.has-img .cap,
 .tile.has-img figcaption {
   position: relative;
@@ -844,7 +988,7 @@ figure.tile {
 
 .pg .tile small {
   display: block;
-  color: var(--gold);
+  color: var(--gold-text);
 }
 
 .ttl {
@@ -861,7 +1005,7 @@ figure.tile {
 
   margin-top: 10px;
 
-  color: var(--gold);
+  color: var(--gold-text);
   font-size: .85rem;
 }
 
@@ -975,7 +1119,7 @@ figure.tile {
 }
 
 .trk span:hover {
-  color: var(--gold);
+  color: var(--gold-text);
 }
 
 @keyframes mq {
@@ -1022,7 +1166,7 @@ textarea {
   padding: 12px 0;
 
   border: 0;
-  border-bottom: 1px solid var(--line);
+  border-bottom: 1px solid var(--field-line);
 
   border-radius: 0;
 
@@ -1039,7 +1183,7 @@ input:focus,
 select:focus,
 textarea:focus {
   outline: none;
-  border-bottom-color: var(--gold);
+  border-bottom-color: var(--gold-text);
 }
 
 input::placeholder,
@@ -1108,7 +1252,7 @@ textarea {
 }
 
 .contact a:hover {
-  color: var(--gold);
+  color: var(--gold-text);
 }
 
 
@@ -1122,7 +1266,10 @@ footer {
     calc(36px + env(safe-area-inset-bottom, 0px));
 
   background: var(--dark);
-  color: #8E97A6;
+  color: var(--on-dark-muted);
+
+  /* No tema claro o rodapé é creme sobre creme: a linha separa-o do conteúdo. */
+  border-top: 1px solid var(--line);
 
   font-size: .88rem;
 }
@@ -1180,6 +1327,23 @@ footer {
 
   .hero {
     padding: 130px 0 110px;
+
+    /* Tablet e telemóvel: o hero fica mais alto que largo, então o
+       "cover" corta os lados. Enquadra mais à direita, onde o
+       degradê escuro deixa a imagem aparecer. */
+    background-image:
+      var(--hero-overlay-sm),
+      var(--hero-img);
+
+    background-position:
+      center,
+      70% center;
+  }
+
+  /* Ecrãs pequenos: a imagem é muito recortada e o texto ocupa a
+     largura toda, então o véu fica mais denso. */
+  html::before {
+    background-image: var(--page-img-sm);
   }
 
   #menu {
@@ -1276,13 +1440,9 @@ footer {
   .hero {
     padding: 100px 0;
 
-    background-size:
-      cover,
-      250px auto;
-
     background-position:
       center,
-      right center;
+      75% center;
   }
 
   .hero h1 {
@@ -1323,120 +1483,10 @@ footer {
 
 
 /* =========================================================
-   23. TEMA CLARO AUTOMÁTICO
-   ========================================================= */
-
-@media (prefers-color-scheme: light) {
-
-  :root:not([data-theme="dark"]) {
-
-    --bg: #FBFAF7;
-    --paper: #FFFFFF;
-    --text: #252A32;
-    --muted: #68707D;
-    --line: #E6E1D5;
-    --head: #10213C;
-    --navy: #10213C;
-    --dark: #F1ECE0;
-
-  }
-
-  :root:not([data-theme="dark"]) .hero {
-
-    background-image:
-      linear-gradient(
-        rgba(251, 250, 247, .83),
-        rgba(251, 250, 247, .92)
-      ),
-      url('../img/Pascoal.png');
-
-    color: var(--text);
-
-  }
-
-  :root:not([data-theme="dark"]) .hero h1 {
-    color: #10213C;
-  }
-
-  :root:not([data-theme="dark"]) .hero p {
-    color: #5D6572;
-  }
-
-  :root:not([data-theme="dark"]) .cover,
-  :root:not([data-theme="dark"]) footer {
-    color: #252A32;
-  }
-
-  :root:not([data-theme="dark"]) .cover h2 {
-    color: #10213C;
-  }
-
-  :root:not([data-theme="dark"]) .cover .lead {
-    color: #5D6572;
-  }
-
-  :root:not([data-theme="dark"]) .hero .btn:not(.gold),
-  :root:not([data-theme="dark"]) .cover .btn:not(.gold) {
-    border-color: #10213C;
-    color: #10213C;
-  }
-
-  :root:not([data-theme="dark"]) .tile:nth-child(odd) {
-    color: #5D6572;
-  }
-
-  :root:not([data-theme="dark"]) footer {
-    color: #5D6572;
-  }
-}
-
-
-/* =========================================================
-   24. TEMA CLARO MANUAL
-   ========================================================= */
-
-:root[data-theme="light"] .hero {
-
-  background-image:
-    linear-gradient(
-      rgba(251, 250, 247, .83),
-      rgba(251, 250, 247, .92)
-    ),
-    url('../img/Pascoal.png');
-
-  color: var(--text);
-}
-
-:root[data-theme="light"] .hero h1 {
-  color: var(--head);
-}
-
-:root[data-theme="light"] .hero p {
-  color: var(--muted);
-}
-
-:root[data-theme="light"] .cover,
-:root[data-theme="light"] footer {
-  color: var(--text);
-}
-
-:root[data-theme="light"] .cover h2 {
-  color: var(--head);
-}
-
-:root[data-theme="light"] .cover .lead {
-  color: var(--muted);
-}
-
-:root[data-theme="light"] .hero .btn:not(.gold),
-:root[data-theme="light"] .cover .btn:not(.gold) {
-  border-color: var(--navy);
-  color: var(--navy);
-}
-
-
-/* =========================================================
-   25. MOVIMENTO REDUZIDO
+   23. MOVIMENTO REDUZIDO
+   (as antigas secções 23 e 24, de tema claro automático e
+   manual, foram removidas: o tema claro agora vive nas
+   variáveis de :root)
    ========================================================= */
 
 @media (prefers-reduced-motion: reduce) {
