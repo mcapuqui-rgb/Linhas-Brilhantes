@@ -1,0 +1,13 @@
+/* Início e linhas animadas */
+.hero{background:var(--dark);color:#fff;padding:140px 0 120px;position:relative;overflow:hidden}
+.hero h1{color:#fff;font-size:clamp(3rem,9vw,6.6rem);line-height:.98;max-width:12ch;font-weight:500}
+.hero p{max-width:50ch;color:#b9c0cd;font-size:1.15rem;margin:32px 0 40px}
+.hero .acts{display:flex;gap:14px;flex-wrap:wrap}
+.hero .btn:not(.gold){background:transparent;border-color:rgba(255,255,255,.35);color:#fff}
+.hero .btn:not(.gold):hover{border-color:var(--gold);color:var(--gold)}
+.thread{position:absolute;left:0;right:0;bottom:44px;width:100%;height:90px;pointer-events:none}
+.thread path{fill:none;stroke:var(--gold);stroke-width:1.5;stroke-dasharray:3 9;stroke-linecap:round;animation:stitch 14s linear infinite}
+@keyframes stitch{to{stroke-dashoffset:-240}}
+@media (prefers-reduced-motion:reduce){.thread path{animation:none}html{scroll-behavior:auto}}
+.thread.top{bottom:auto;top:24px}.thread.top path{animation-direction:reverse}
+#sc,#nd{position:absolute;left:0;top:0;width:28px;height:28px;pointer-events:none;z-index:2;visibility:hidden;will-change:transform}

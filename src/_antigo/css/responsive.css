@@ -1,0 +1,13 @@
+/* Ecrãs pequenos */
+@media (max-width:860px){
+section{padding:76px 0}
+.hero{padding:130px 0 110px}
+#menu{display:block}
+nav{display:none;position:absolute;top:72px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;align-items:flex-start;padding:20px 24px 28px;gap:16px}
+nav.open{display:flex}
+.split,.contact{grid-template-columns:1fr;gap:36px}
+.row{grid-template-columns:1fr;gap:6px}
+.gal{grid-template-columns:1fr 1fr}
+.names{grid-template-columns:1fr}
+form{grid-template-columns:1fr}
+}

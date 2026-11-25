@@ -7,6 +7,10 @@
    escuros só redefinem variáveis. Nenhum componente tem
    regras próprias por tema, o que evita conflitos de
    especificidade entre o claro automático e o manual.
+
+   Alterações acrescentadas:
+   - Secção 8B: fundo do hero com troca de imagens (fade)
+   - Secção 21B: galeria de arte com "Ver mais" em ecrãs pequenos
    ========================================================= */
 
 
@@ -43,13 +47,13 @@
   /* Fundo da página (imagem sob um véu creme) */
   --page-img:
     linear-gradient(rgba(251, 250, 247, .95), rgba(251, 250, 247, .95)),
-    url("../img/Vestimenta.png");
+    url("../img/Background/Background.jpg");
   --page-img-sm:
     linear-gradient(rgba(251, 250, 247, .97), rgba(251, 250, 247, .97)),
-    url("../img/Vestimenta.png");
+    url("../img/Background/Background.jpg");
 
   /* Hero */
-  --hero-img: url(../img/Vestimenta.png);
+  --hero-img: url(../img/Background/Background.jpg);
   --hero-overlay: linear-gradient(
     90deg,
     rgb(255, 255, 255),
@@ -62,9 +66,9 @@
   );
 
   /* Parágrafo do hero */
-  --hero-p-bg: rgba(255, 255, 255, .47);
-  --hero-p-color: #10213C;
-  --hero-p-shadow: 0 0 10px rgba(255, 255, 255, .84);
+  
+  --hero-p-color: #000000;
+  
 
   box-sizing: border-box;
 
@@ -100,12 +104,12 @@
 
     --page-img:
       linear-gradient(#10213C, rgba(0, 0, 0, .863)),
-      url("../img/Vestimenta.png");
+      url("../img/Background/Background.jpg");
     --page-img-sm:
       linear-gradient(rgba(16, 33, 60, .96), rgba(0, 0, 0, .93)),
-      url("../img/Vestimenta.png");
+      url("../img/Background/Background.jpg");
 
-    --hero-img: url(../img/Vestimenta.png);
+    --hero-img: url(../img/Background/Background.jpg);
     --hero-overlay: linear-gradient(
       90deg,
       rgb(0, 0, 0),
@@ -149,12 +153,12 @@
 
   --page-img:
     linear-gradient(#10213C, rgba(0, 0, 0, .863)),
-    url("../img/Vestimenta.png");
+    url("../img/Background/Background.jpg");
   --page-img-sm:
     linear-gradient(rgba(16, 33, 60, .96), rgba(0, 0, 0, .93)),
-    url("../img/Vestimenta.png");
+    url("../img/Background/Background.jpg");
 
-  --hero-img: url(../img/Vestimenta.png);
+  --hero-img: url(../img/Background/Background.jpg);
   --hero-overlay: linear-gradient(
     90deg,
     rgb(0, 0, 0),
@@ -686,6 +690,72 @@ nav a:not(.btn):hover::after {
 
   visibility: hidden;
   will-change: transform;
+}
+
+
+/* =========================================================
+   8B. FUNDO DO HERO COM TROCA DE IMAGENS
+   (criado pelo js/components/hero-bg.js)
+   ========================================================= */
+
+.hero-slides {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  pointer-events: none;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0;
+  transition: opacity 1.4s ease;
+}
+
+.hero-slide.on {
+  opacity: 1;
+}
+
+/* Véu do tema por cima das imagens (o mesmo que o hero usa) */
+.hero-slides::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background-image: var(--hero-overlay);
+}
+
+/* Conteúdo e linhas do hero ficam acima do fundo */
+.hero > .wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.thread {
+  z-index: 1;
+}
+
+@media (max-width: 860px) {
+  .hero-slide {
+    background-position: 70% center;
+  }
+
+  .hero-slides::after {
+    background-image: var(--hero-overlay-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-slide {
+    background-position: 75% center;
+  }
 }
 
 
@@ -1418,6 +1488,41 @@ footer {
 
   form .full {
     grid-column: auto;
+  }
+}
+
+
+/* =========================================================
+   21B. GALERIA DE ARTE: "VER MAIS" EM ECRÃS PEQUENOS
+   (controlado pelo bloco no js/main.js)
+   ========================================================= */
+
+.gal-more {
+  display: none;
+
+  margin-top: 28px;
+  text-align: center;
+}
+
+@media (max-width: 860px) {
+
+  .gal-more {
+    display: block;
+  }
+
+  .gal-more.vazio {
+    display: none;
+  }
+
+  /* 2 colunas: 4 obras = 2 linhas */
+  #arte {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  /* Pré-visualização: só as 4 primeiras até carregar em "Ver mais" */
+  #arte:not(.aberta) .extra {
+    display: none;
   }
 }
 

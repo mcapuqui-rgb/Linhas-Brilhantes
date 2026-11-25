@@ -1,0 +1,12 @@
+/* Galeria, filtros e cartões */
+.gal{display:grid;gap:16px;grid-template-columns:repeat(4,1fr);margin-top:48px}
+.tile{aspect-ratio:3/4;border:1px solid var(--line);background:var(--paper);display:flex;align-items:flex-end;padding:18px;color:var(--muted);font-size:.9rem}
+.tile:nth-child(odd){background:var(--dark);color:#b9c0cd;border-color:var(--dark)}
+.fl{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}.fl button{font:inherit;font-size:.88rem;padding:8px 16px;border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:99px;cursor:pointer}.fl button.on{background:var(--gold);border-color:var(--gold);color:#10213C}.pg{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));margin-top:24px}.pg .tile small{display:block;color:var(--gold)}
+.tile{position:relative;overflow:hidden}
+figure.tile{margin:0}
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tile.has-img{padding:0}
+.tile.has-img .cap,.tile.has-img figcaption{position:relative;width:100%;padding:44px 18px 18px;background:linear-gradient(transparent,rgba(16,33,60,.88));color:#fff}
+.ttl{font:500 1.3rem "Cormorant Garamond",Georgia,serif;display:block}
+.ask{display:block;margin-top:10px;color:var(--gold);font-size:.85rem}

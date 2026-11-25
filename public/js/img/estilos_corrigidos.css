@@ -1,0 +1,310 @@
+/* Ponto de entrada: a ordem dos imports é a ordem da cascata. */
+
+/* Variáveis de cor e modo escuro */
+
+:root{--navy:#10213C;--gold:#C49A50;--bg:#FBFAF7;--paper:#FFFFFF;--text:#252A32;--muted:#68707d;--line:#e6e1d5;--head:#10213C;--dark:#10213C;
+
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0b121e;--paper:#111b2c;--text:#e9e7e2;--muted:#9ba4b2;--line:#25324a;--head:#f1ece0;--dark:#080e18}}
+
+:root[data-theme="dark"]{--bg:#0b121e;--paper:#111b2c;--text:#e9e7e2;--muted:#9ba4b2;--line:#25324a;--head:#f1ece0;--dark:#080e18}
+
+/* Reset, tipografia e acessibilidade */
+
+\*,\*::before,\*::after{box-sizing:inherit}
+
+html{scroll-behavior:smooth;scroll-padding-top:calc(80px + env(safe-area-inset-top,0px));height:auto}
+
+body{margin:0;background:var(--bg);color:var(--text);font:400 1.02rem/1.7 "Hanken Grotesk",system-ui,sans-serif;-webkit-font-smoothing:antialiased}
+
+h1,h2,h3{font-family:"Cormorant Garamond",Georgia,serif;font-weight:500;color:var(--head);margin:0;letter-spacing:-.01em}
+
+h2{font-size:clamp(2.2rem,5vw,3.4rem);line-height:1.05;margin-bottom:.5em}
+
+h3{font-size:1.5rem;line-height:1.2}
+
+a{color:inherit}
+
+.wrap{max-width:1120px;margin:0 auto;padding:0 24px}
+
+section{padding:112px 0}
+
+.lead{font-size:1.15rem;color:var(--muted);max-width:56ch}
+
+.rule{width:56px;height:1px;background:var(--gold);margin:0 0 28px;border:0}
+
+.btn:focus-visible,a:focus-visible,#menu:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+
+/* Botões */
+
+.btn{display:inline-block;background:var(--navy);color:#fff;font:500 .95rem "Hanken Grotesk",sans-serif;padding:14px 28px;border-radius:2px;text-decoration:none;border:1px solid var(--navy);cursor:pointer;transition:background .2s,color .2s}
+
+.btn:hover{background:transparent;color:var(--head)}
+
+.btn.gold{background:var(--gold);border-color:var(--gold);color:#10213C}
+
+.btn.gold:hover{background:transparent;color:var(--gold)}
+
+nav .btn{padding:10px 20px;color:#fff}
+
+nav .btn:hover{color:var(--head)}
+
+/* Cabeçalho e menu */
+
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);background:var(--bg);z-index:30}
+
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:color-mix(in srgb,var(--bg) 90%,transparent);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:72px}
+
+.logo img { width: 40px; height: auto;display: block;}
+
+.nome img { height: 36px; width: auto; display: block; }
+
+nav{display:flex;gap:18px;align-items:center}
+
+#menu{display:none}
+
+
+
+nav.open { display: flex; }
+
+nav a:hover{color:var(--head)}
+
+#menu {
+
+  background: none;
+
+  border: 1px solid var(--line);
+
+  color: var(--head);
+
+  border-radius: 2px;
+
+  padding: 8px 14px;
+
+  font: inherit;
+
+  cursor: pointer;
+
+}
+
+/* Início e linhas animadas */
+
+.hero {
+
+    background-image: url('../img/Pascoal.png');
+
+    background-repeat: no-repeat;
+
+    background-size: 450px;
+
+    background-position: right;
+
+    color: #fff;
+
+    padding: 140px 0 120px;
+
+    position: relative;
+
+    overflow: hidden;
+
+}
+
+.hero h1{color:#fff;font-size:clamp(3rem,9vw,6.6rem);line-height:.98;max-width:12ch;font-weight:500}
+
+.hero p{max-width:50ch;color:#b9c0cd;font-size:1.15rem;margin:32px 0 40px}
+
+.hero .acts{display:flex;gap:14px;flex-wrap:wrap}
+
+.hero .btn:not(.gold){background:transparent;border-color:rgba(255,255,255,.35);color:#fff}
+
+.hero .btn:not(.gold):hover{border-color:var(--gold);color:var(--gold)}
+
+.thread{position:absolute;left:0;right:0;bottom:44px;width:100%;height:90px;pointer-events:none}
+
+.thread path{fill:none;stroke:var(--gold);stroke-width:1.5;stroke-dasharray:3 9;stroke-linecap:round;animation:stitch 14s linear infinite}
+
+@keyframes stitch{to{stroke-dashoffset:-240}}
+
+@media (prefers-reduced-motion:reduce){.thread path{animation:none}html{scroll-behavior:auto}}
+
+.thread.top{bottom:auto;top:24px}.thread.top path{animation-direction:reverse}
+
+#sc,#nd{position:absolute;left:0;top:0;width:28px;height:28px;pointer-events:none;z-index:2;visibility:hidden;will-change:transform}
+
+/* Grelhas e blocos comuns */
+
+.split{display:grid;gap:72px;grid-template-columns:1fr 1.2fr;align-items:start}
+
+.paper{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+
+.note{font-size:.88rem;color:var(--muted);margin-top:28px;max-width:64ch}
+
+.cover{background:var(--dark);color:#fff}
+
+.cover h2{color:#fff}
+
+.cover .lead{color:#b9c0cd}
+
+/* Sobre nós */
+
+.pillars{display:grid;gap:0}
+
+.pillars div{padding:26px 0;border-top:1px solid var(--line)}
+
+.pillars div:last-child{border-bottom:1px solid var(--line)}
+
+.pillars p{margin:8px 0 0;color:var(--muted)}
+
+/* Produtos e serviços */
+
+.index{margin-top:56px;border-bottom:1px solid var(--line)}
+
+.row{display:grid;grid-template-columns:1fr 1.5fr auto;gap:32px;align-items:baseline;padding:28px 0;border-top:1px solid var(--line);transition:padding-left .25s}
+
+.row:hover{padding-left:12px}
+
+.row p{margin:0;color:var(--muted);font-size:.97rem}
+
+.row a{font-size:.9rem;color:var(--gold);text-decoration:none;font-weight:500}
+
+/* Produção */
+
+.steps{list-style:none;margin:0;padding:0;counter-reset:s}
+
+.steps li{counter-increment:s;display:grid;grid-template-columns:48px 1fr;padding:22px 0;border-top:1px solid var(--line)}
+
+.steps li:last-child{border-bottom:1px solid var(--line)}
+
+.steps li::before{content:counter(s,decimal-leading-zero);font:500 1.3rem "Cormorant Garamond",serif;color:var(--gold)}
+
+.steps span{color:var(--muted)}
+
+/* Galeria, filtros e cartões */
+
+.gal{display:grid;gap:16px;grid-template-columns:repeat(4,1fr);margin-top:48px}
+
+.tile{aspect-ratio:3/4;border:1px solid var(--line);background:var(--paper);display:flex;align-items:flex-end;padding:18px;color:var(--muted);font-size:.9rem}
+
+.tile:nth-child(odd){background:var(--dark);color:#b9c0cd;border-color:var(--dark)}
+
+.fl{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}.fl button{font:inherit;font-size:.88rem;padding:8px 16px;border:1px solid var(--line);background:transparent;color:var(--muted);border-radius:99px;cursor:pointer}.fl button.on{background:var(--gold);border-color:var(--gold);color:#10213C}.pg{display:grid;gap:16px;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));margin-top:24px}.pg .tile small{display:block;color:var(--gold)}
+
+.tile{position:relative;overflow:hidden}
+
+figure.tile{margin:0}
+
+.tile img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+
+.tile.has-img{padding:0}
+
+.tile.has-img .cap,.tile.has-img figcaption{position:relative;width:100%;padding:44px 18px 18px;background:linear-gradient(transparent,rgba(16,33,60,.88));color:#fff}
+
+.ttl{font:500 1.3rem "Cormorant Garamond",Georgia,serif;display:block}
+
+.ask{display:block;margin-top:10px;color:var(--gold);font-size:.85rem}
+
+/* Clientes e parceiros */
+
+.names{display:grid;grid-template-columns:repeat(3,1fr);margin-top:48px;border-left:1px solid var(--line)}
+
+.names span{padding:22px 24px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);border-top:1px solid var(--line);margin-top:-1px;font-family:"Cormorant Garamond",serif;font-size:1.3rem;color:var(--head)}
+
+.mq{overflow:hidden;margin-top:48px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);-webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+
+.trk{display:flex;width:max-content;padding:22px 0;animation:mq 46s linear infinite}
+
+.trk.r{animation-direction:reverse;border-top:1px dashed var(--line)}
+
+.mq:hover .trk{animation-play-state:paused}
+
+.trk span{font:500 clamp(1.5rem,3.4vw,2.4rem) "Cormorant Garamond",Georgia,serif;color:var(--head);white-space:nowrap;display:flex;align-items:center;gap:28px;padding-left:28px;transition:color .25s}
+
+.trk span::after{content:"";width:34px;border-top:2px dashed var(--gold)}
+
+.trk span:hover{color:var(--gold)}
+
+@keyframes mq{to{transform:translateX(-50%)}}
+
+/* Formulário de orçamento */
+
+form{display:grid;gap:24px 28px;grid-template-columns:1fr 1fr;margin-top:48px}
+
+form .full{grid-column:1/-1}
+
+label{display:grid;gap:6px;font-size:.85rem;color:var(--muted)}
+
+input,select,textarea{font:inherit;font-size:1rem;padding:12px 0;border:0;border-bottom:1px solid var(--line);border-radius:0;background:transparent;color:var(--text)}
+
+input:focus,select:focus,textarea:focus{outline:0;border-bottom-color:var(--gold)}
+
+select option{background:var(--paper);color:var(--text)}
+
+.err{color:#c0392b;font-size:.82rem;min-height:1em}
+
+#ok{display:none;padding:20px;border:1px solid var(--gold);margin-top:24px}
+
+/* Contactos */
+
+.contact{display:grid;gap:56px;grid-template-columns:repeat(3,1fr);margin-top:48px}
+
+.contact h3{font-size:1.2rem;margin-bottom:8px}
+
+.contact p{margin:0;color:var(--muted)}
+
+.contact a{text-decoration:none;color:var(--text)}
+
+/* Rodapé e botão WhatsApp */
+
+footer{background:var(--dark);color:#8e97a6;padding:36px 0 calc(36px + env(safe-area-inset-bottom,0px));font-size:.88rem}
+
+.wa{position:fixed;right:18px;bottom:calc(18px + env(safe-area-inset-bottom,0px));background:var(--gold);color:#10213C;font-weight:600;font-size:.9rem;padding:13px 22px;border-radius:99px;text-decoration:none;z-index:25;box-shadow:0 6px 24px rgba(16,33,60,.25)}
+
+/* O tema claro é o padrão; o tema escuro é ativado pelo sistema ou por data-theme="dark". */
+
+/* Ecrãs pequenos */
+
+@media (max-width:860px){
+#menu{display:block}
+
+
+section{padding:76px 0}
+
+.hero{padding:130px 0 110px}
+
+#menu{display:block}
+
+nav{display:none;position:absolute;top:72px;left:0;right:0;background:var(--bg);border-bottom:1px solid var(--line);flex-direction:column;align-items:center;padding:20px 24px 28px;gap:16px}
+
+nav.open{display:flex}
+
+.split,.contact{grid-template-columns:1fr;gap:36px}
+
+.row{grid-template-columns:1fr;gap:6px}
+
+.gal{grid-template-columns:1fr 1fr}
+
+.names{grid-template-columns:1fr}
+
+form{grid-template-columns:1fr}
+
+}
+
+
+
+
+@media (max-width:520px){
+  .wrap{padding-left:18px;padding-right:18px}
+  .hero{background-size: min(78vw, 340px);background-position: right bottom}
+  .hero h1{font-size:clamp(2.7rem,14vw,4.2rem)}
+  .gal{gap:10px}
+  .contact{gap:28px}
+  form{gap:20px}
+}
+
+@media (max-width:860px){
+  nav .btn{width:100%;text-align:center}
+  .split{gap:36px}
+}

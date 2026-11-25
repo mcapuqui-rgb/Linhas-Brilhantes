@@ -1,17 +1,1616 @@
-/* Ponto de entrada: a ordem dos imports é a ordem da cascata. */
-@import "tokens.css";
-@import "base.css";
-@import "buttons.css";
-@import "header.css";
-@import "hero.css";
-@import "layout.css";
-@import "about.css";
-@import "catalogo.css";
-@import "producao.css";
-@import "galeria.css";
-@import "clientes.css";
-@import "orcamento.css";
-@import "contactos.css";
-@import "footer.css";
-@import "theme-light.css";
-@import "responsive.css";
+/* =========================================================
+   CSS PRINCIPAL (versão corrigida)
+   Identidade visual: Azul-marinho, dourado e creme
+   Temas: claro, escuro e automático
+
+   Princípio: o tema claro é o padrão em :root. Os temas
+   escuros só redefinem variáveis. Nenhum componente tem
+   regras próprias por tema, o que evita conflitos de
+   especificidade entre o claro automático e o manual.
+
+   Alterações acrescentadas:
+   - Secção 8B: fundo do hero com troca de imagens (fade)
+   - Secção 21B: galeria de arte com "Ver mais" em ecrãs pequenos
+   ========================================================= */
+
+
+/* =========================================================
+   1. VARIÁVEIS E TEMAS
+   ========================================================= */
+
+/* Tema claro (padrão) */
+:root {
+  --navy: hsl(217, 58%, 15%);
+  --gold: #C49A50;
+  --gold-text: #8A6420;          /* dourado escuro, legível em texto sobre creme */
+
+  --bg: #FBFAF7;
+  --paper: #FFFFFF;
+  --text: #252A32;
+  --muted: #68707D;
+  --line: #E6E1D5;
+  --field-line: #8F8978;         /* linha dos campos do formulário (contraste ≥ 3:1) */
+  --head: #10213C;
+
+  /* Superfícies de destaque (hero, cover, rodapé, tiles ímpares) */
+  --dark: #F1ECE0;
+  --on-dark: #10213C;            /* títulos sobre a superfície */
+  --on-dark-text: #252A32;       /* texto corrente */
+  --on-dark-muted: #5D6572;      /* texto secundário */
+  --tile-odd-border: var(--line);
+
+  /* Botão fantasma (hero e cover) */
+  --ghost-border: #10213C;
+  --ghost-color: #10213C;
+  --ghost-hover: var(--gold-text);
+
+  /* Fundo da página (imagem sob um véu creme) */
+  --page-img:
+    linear-gradient(rgba(251, 250, 247, .95), rgba(251, 250, 247, .95)),
+    url("../img/Background/Background.jpg");
+  --page-img-sm:
+    linear-gradient(rgba(251, 250, 247, .97), rgba(251, 250, 247, .97)),
+    url("../img/Background/Background.jpg");
+
+  /* Hero */
+  --hero-img: url(../img/Background/Background.jpg);
+  --hero-overlay: linear-gradient(
+    90deg,
+    rgb(255, 255, 255),
+    rgba(238, 242, 250, 0)
+  );
+  /* Em ecrãs estreitos o texto ocupa a largura toda: véu uniforme */
+  --hero-overlay-sm: linear-gradient(
+    rgba(255, 255, 255, .88),
+    rgba(255, 255, 255, .72)
+  );
+
+  /* Parágrafo do hero */
+  --hero-p-bg: rgba(255, 255, 255, .47);
+  --hero-p-color: #10213C;
+  --hero-p-shadow: 0 0 10px rgba(255, 255, 255, .84);
+
+  box-sizing: border-box;
+
+  padding-top: env(safe-area-inset-top, 0px);
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+
+  color-scheme: light;
+}
+
+/* Tema escuro automático */
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]) {
+    --gold-text: #C49A50;
+
+    --bg: #0B121E;
+    --paper: #111B2C;
+    --text: #E9E7E2;
+    --muted: #9BA4B2;
+    --line: #25324A;
+    --field-line: #25324A;
+    --head: #F1ECE0;
+
+    --dark: #080E18;
+    --on-dark: #FFFFFF;
+    --on-dark-text: #FFFFFF;
+    --on-dark-muted: #B9C0CD;
+    --tile-odd-border: #080E18;
+
+    --ghost-border: rgba(255, 255, 255, .35);
+    --ghost-color: #FFFFFF;
+    --ghost-hover: #C49A50;
+
+    --page-img:
+      linear-gradient(#10213C, rgba(0, 0, 0, .863)),
+      url("../img/Background/Background.jpg");
+    --page-img-sm:
+      linear-gradient(rgba(16, 33, 60, .96), rgba(0, 0, 0, .93)),
+      url("../img/Background/Background.jpg");
+
+    --hero-img: url(../img/Background/Background.jpg);
+    --hero-overlay: linear-gradient(
+      90deg,
+      rgb(0, 0, 0),
+      rgba(11, 18, 30, 0.13)
+    );
+    --hero-overlay-sm: linear-gradient(
+      rgba(0, 0, 0, .7),
+      rgba(11, 18, 30, .45)
+    );
+
+    --hero-p-bg: transparent;
+    --hero-p-color: #FFFFFF;
+    --hero-p-shadow: none;
+
+    color-scheme: dark;
+  }
+}
+
+/* Tema escuro manual */
+
+:root[data-theme="dark"] {
+  --gold-text: #C49A50;
+
+  --bg: #0B121E;
+  --paper: #111B2C;
+  --text: #E9E7E2;
+  --muted: #9BA4B2;
+  --line: #25324A;
+  --field-line: #25324A;
+  --head: #F1ECE0;
+
+  --dark: #080E18;
+  --on-dark: #FFFFFF;
+  --on-dark-text: #FFFFFF;
+  --on-dark-muted: #B9C0CD;
+  --tile-odd-border: #080E18;
+
+  --ghost-border: rgba(255, 255, 255, .35);
+  --ghost-color: #FFFFFF;
+  --ghost-hover: #C49A50;
+
+  --page-img:
+    linear-gradient(#10213C, rgba(0, 0, 0, .863)),
+    url("../img/Background/Background.jpg");
+  --page-img-sm:
+    linear-gradient(rgba(16, 33, 60, .96), rgba(0, 0, 0, .93)),
+    url("../img/Background/Background.jpg");
+
+  --hero-img: url(../img/Background/Background.jpg);
+  --hero-overlay: linear-gradient(
+    90deg,
+    rgb(0, 0, 0),
+    rgba(11, 18, 30, 0.13)
+  );
+  --hero-overlay-sm: linear-gradient(
+    rgba(0, 0, 0, .7),
+    rgba(11, 18, 30, .45)
+  );
+
+  --hero-p-bg: transparent;
+  --hero-p-color: #FFFFFF;
+  --hero-p-shadow: none;
+
+  color-scheme: dark;
+}
+
+/* Tema claro manual: repõe os valores claros, caso o
+   sistema esteja em modo escuro. Não precisa de mais nada,
+   porque as regras escuras acima excluem data-theme="light". */
+
+:root[data-theme="light"] {
+  color-scheme: light;
+}
+
+
+/* =========================================================
+   2. LOGÓTIPOS POR TEMA
+   ========================================================= */
+
+.logo-tema-claro {
+  display: block;
+}
+
+.logo-tema-escuro {
+  display: none;
+}
+
+:root[data-theme="dark"] .logo-tema-claro {
+  display: none;
+}
+
+:root[data-theme="dark"] .logo-tema-escuro {
+  display: block;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="dark"])
+  .logo-tema-claro {
+    display: none;
+  }
+
+  :root:not([data-theme="light"]):not([data-theme="dark"])
+  .logo-tema-escuro {
+    display: block;
+  }
+}
+
+
+/* =========================================================
+   3. RESET E CONFIGURAÇÕES GERAIS
+   ========================================================= */
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  height: auto;
+  scroll-behavior: smooth;
+
+  background-color: var(--bg);
+
+  scroll-padding-top: calc(
+    80px + env(safe-area-inset-top, 0px)
+  );
+}
+
+/* Imagem de fundo da página numa camada fixa atrás do conteúdo.
+   "background-attachment: fixed" não funciona no iOS e, com "scroll",
+   o "cover" esticaria a imagem pela altura total da página. */
+html::before {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  background-image: var(--page-img);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  pointer-events: none;
+}
+
+body {
+  margin: 0;
+
+  background: transparent;
+  color: var(--text);
+
+  font: 400 1.02rem/1.7
+    "Hanken Grotesk",
+    system-ui,
+    sans-serif;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  overflow-x: hidden;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+h1,
+h2,
+h3 {
+  margin: 0;
+
+  font-family:
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  font-weight: 500;
+  color: var(--head);
+  letter-spacing: -.01em;
+}
+
+h1 {
+  line-height: 1;
+}
+
+h2 {
+  font-size: clamp(2.2rem, 5vw, 3.4rem);
+  line-height: 1.05;
+  margin-bottom: .5em;
+}
+
+h3 {
+  font-size: 1.5rem;
+  line-height: 1.2;
+}
+
+p {
+  overflow-wrap: break-word;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+.wrap {
+  width: 100%;
+  max-width: 1120px;
+
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+section {
+  padding: 112px 0;
+}
+
+.lead {
+  max-width: 56ch;
+
+  font-size: 1.15rem;
+  color: var(--muted);
+}
+
+.rule {
+  width: 56px;
+  height: 1px;
+
+  margin: 0 0 28px;
+
+  background: var(--gold);
+  border: 0;
+}
+
+
+/* =========================================================
+   4. ACESSIBILIDADE E FOCO
+   ========================================================= */
+
+:focus-visible {
+  outline: 2px solid var(--gold-text);
+  outline-offset: 4px;
+}
+
+button,
+a {
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: var(--gold);
+  color: #10213C;
+}
+
+
+/* =========================================================
+   5. BOTÕES
+   ========================================================= */
+
+.btn {
+  display: inline-block;
+
+  padding: 14px 28px;
+
+  background: var(--navy);
+  color: #FFFFFF;
+
+  font: 500 .95rem
+    "Hanken Grotesk",
+    sans-serif;
+
+  text-decoration: none;
+
+  border: 1px solid var(--navy);
+  border-radius: 2px;
+
+  cursor: pointer;
+
+  transition:
+    background .2s ease,
+    color .2s ease,
+    border-color .2s ease;
+}
+
+.btn:hover {
+  background: transparent;
+  color: var(--head);
+}
+
+.btn.gold {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: #10213C;
+}
+
+.btn.gold:hover {
+  background: transparent;
+  color: var(--gold-text);
+}
+
+nav .btn {
+  padding: 10px 20px;
+  color: #FFFFFF;
+}
+
+nav .btn:hover {
+  color: var(--head);
+}
+
+/* Botão fantasma, partilhado por hero e cover.
+   Usa variáveis, por isso funciona nos dois temas e
+   o hover deixa de ser anulado por regras do tema. */
+
+.hero .btn:not(.gold),
+.cover .btn:not(.gold) {
+  background: transparent;
+
+  border-color: var(--ghost-border);
+  color: var(--ghost-color);
+}
+
+.hero .btn:not(.gold):hover,
+.cover .btn:not(.gold):hover {
+  border-color: var(--gold);
+  color: var(--ghost-hover);
+}
+
+
+/* =========================================================
+   6. CABEÇALHO E NAVEGAÇÃO
+   ========================================================= */
+
+body::before {
+  content: "";
+
+  position: fixed;
+  inset: 0 0 auto;
+
+  height: env(safe-area-inset-top, 0px);
+
+  background: var(--bg);
+
+  z-index: 30;
+}
+
+header {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+
+  z-index: 20;
+
+  background: var(--bg);
+
+  border-bottom: 1px solid var(--line);
+
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+}
+
+@supports (background: color-mix(in srgb, white, black)) {
+  header {
+    background: color-mix(
+      in srgb,
+      var(--bg) 90%,
+      transparent
+    );
+  }
+}
+
+header .wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  height: 72px;
+}
+
+.logo img {
+  width: 40px;
+  height: auto;
+}
+
+.nome img {
+  height: 36px;
+  width: auto;
+}
+
+nav {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+nav a {
+  position: relative;
+
+  text-decoration: none;
+
+  transition: color .25s ease;
+}
+
+nav a:not(.btn)::after {
+  content: "";
+
+  position: absolute;
+  left: 0;
+  bottom: 3px;
+
+  width: 100%;
+  height: 1px;
+
+  background: var(--gold);
+
+  transform: scaleX(0);
+  transform-origin: left;
+
+  transition: transform .3s ease;
+}
+
+nav a:not(.btn):hover {
+  color: var(--gold-text);
+}
+
+nav a:not(.btn):hover::after {
+  transform: scaleX(1);
+}
+
+#menu {
+  display: none;
+
+  padding: 8px 14px;
+
+  background: transparent;
+  color: var(--head);
+
+  border: 1px solid var(--line);
+  border-radius: 2px;
+
+  font: inherit;
+  cursor: pointer;
+}
+
+
+/* =========================================================
+   7. SECÇÃO PRINCIPAL — HERO
+   ========================================================= */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+
+  padding: 140px 0 120px;
+
+  background-color: var(--dark);
+
+  background-image:
+    var(--hero-overlay),
+    var(--hero-img);
+
+  background-repeat: no-repeat, no-repeat;
+
+  /* Imagem de 1670x942 (16:9) nos dois temas: "cover" preenche o hero
+     em qualquer largura, sem faixas vazias nem tamanhos fixos. */
+  background-size:
+    cover,
+    cover;
+
+  background-position:
+    center,
+    center;
+
+  color: var(--on-dark-text);
+}
+
+.hero h1 {
+  max-width: 12ch;
+
+  color: var(--on-dark);
+
+  font-size: clamp(3rem, 9vw, 6.6rem);
+  line-height: .98;
+
+  font-weight: 500;
+}
+
+.hero p {
+  max-width: 50ch;
+
+  margin: 32px 0 40px;
+  padding: 14px 24px 14px 0;
+
+  background: var(--hero-p-bg);
+  color: var(--hero-p-color);
+  box-shadow: var(--hero-p-shadow);
+
+  border-radius: 0 40px 40px 0;
+
+  font-size: 1.15rem;
+}
+
+.hero .acts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+}
+
+
+/* =========================================================
+   8. LINHAS ANIMADAS
+   ========================================================= */
+
+.thread {
+  position: absolute;
+
+  left: 0;
+  right: 0;
+  bottom: 44px;
+
+  width: 100%;
+  height: 90px;
+
+  pointer-events: none;
+}
+
+.thread path {
+  fill: none;
+
+  stroke: var(--gold);
+  stroke-width: 1.5;
+
+  stroke-dasharray: 3 9;
+  stroke-linecap: round;
+
+  animation: stitch 14s linear infinite;
+}
+
+.thread.top {
+  bottom: auto;
+  top: 24px;
+}
+
+.thread.top path {
+  animation-direction: reverse;
+}
+
+@keyframes stitch {
+  to {
+    stroke-dashoffset: -240;
+  }
+}
+
+#sc,
+#nd {
+  position: absolute;
+
+  left: 0;
+  top: 0;
+
+  width: 28px;
+  height: 28px;
+
+  pointer-events: none;
+  z-index: 2;
+
+  visibility: hidden;
+  will-change: transform;
+}
+
+
+/* =========================================================
+   8B. FUNDO DO HERO COM TROCA DE IMAGENS
+   (criado pelo js/components/hero-bg.js)
+   ========================================================= */
+
+.hero-slides {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+
+  pointer-events: none;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  opacity: 0;
+  transition: opacity 1.4s ease;
+}
+
+.hero-slide.on {
+  opacity: 1;
+}
+
+/* Véu do tema por cima das imagens (o mesmo que o hero usa) */
+.hero-slides::after {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+
+  background-image: var(--hero-overlay);
+}
+
+/* Conteúdo e linhas do hero ficam acima do fundo */
+.hero > .wrap {
+  position: relative;
+  z-index: 1;
+}
+
+.thread {
+  z-index: 1;
+}
+
+@media (max-width: 860px) {
+  .hero-slide {
+    background-position: 70% center;
+  }
+
+  .hero-slides::after {
+    background-image: var(--hero-overlay-sm);
+  }
+}
+
+@media (max-width: 480px) {
+  .hero-slide {
+    background-position: 75% center;
+  }
+}
+
+
+/* =========================================================
+   9. GRELHAS E BLOCOS COMUNS
+   ========================================================= */
+
+.split {
+  display: grid;
+
+  gap: 72px;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1.2fr);
+
+  align-items: start;
+}
+
+.split > *,
+.contact > *,
+.row > *,
+form > * {
+  min-width: 0;
+}
+
+.paper {
+  background: var(--paper);
+
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.note {
+  max-width: 64ch;
+
+  margin-top: 28px;
+
+  font-size: .88rem;
+  color: var(--muted);
+}
+
+.cover {
+  background: var(--dark);
+  color: var(--on-dark-text);
+}
+
+.cover h2 {
+  color: var(--on-dark);
+}
+
+.cover .lead {
+  color: var(--on-dark-muted);
+}
+
+
+/* =========================================================
+   10. SOBRE NÓS
+   ========================================================= */
+
+.pillars {
+  display: grid;
+  gap: 0;
+}
+
+.pillars div {
+  padding: 26px 0;
+
+  border-top: 1px solid var(--line);
+}
+
+.pillars div:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.pillars p {
+  margin: 8px 0 0;
+  color: var(--muted);
+}
+
+#sobre {
+  background-color: var(--dark);
+  color: var(--on-dark-text);
+}
+
+
+/* =========================================================
+   11. PRODUTOS E SERVIÇOS
+   ========================================================= */
+
+.index {
+  margin-top: 56px;
+  border-bottom: 1px solid var(--line);
+}
+
+.row {
+  display: grid;
+
+  grid-template-columns:
+    minmax(0, 1fr)
+    minmax(0, 1.5fr)
+    auto;
+
+  gap: 32px;
+  align-items: baseline;
+
+  padding: 28px 0;
+
+  border-top: 1px solid var(--line);
+
+  transition: padding-left .25s ease;
+}
+
+.row:hover {
+  padding-left: 12px;
+}
+
+.row p {
+  margin: 0;
+
+  color: var(--muted);
+  font-size: .97rem;
+}
+
+.row a {
+  font-size: .9rem;
+
+  color: var(--gold-text);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+
+/* =========================================================
+   12. PROCESSO DE PRODUÇÃO
+   ========================================================= */
+
+.steps {
+  list-style: none;
+
+  margin: 0;
+  padding: 0;
+
+  counter-reset: s;
+}
+
+.steps li {
+  counter-increment: s;
+
+  display: grid;
+  grid-template-columns: 48px minmax(0, 1fr);
+
+  padding: 22px 0;
+
+  border-top: 1px solid var(--line);
+}
+
+.steps li:last-child {
+  border-bottom: 1px solid var(--line);
+}
+
+.steps li::before {
+  content: counter(s, decimal-leading-zero);
+
+  font: 500 1.3rem
+    "Cormorant Garamond",
+    serif;
+
+  color: var(--gold-text);
+}
+
+.steps span {
+  color: var(--muted);
+}
+
+
+/* =========================================================
+   13. GALERIA
+   ========================================================= */
+
+.gal {
+  display: grid;
+
+  gap: 16px;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  margin-top: 48px;
+}
+
+.tile {
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  align-items: flex-end;
+
+  aspect-ratio: 3 / 4;
+
+  padding: 18px;
+
+  background: var(--paper);
+
+  border: 1px solid var(--line);
+
+  color: var(--muted);
+  font-size: .9rem;
+}
+
+.tile:nth-child(odd) {
+  background: var(--dark);
+
+  color: var(--on-dark-muted);
+
+  border-color: var(--tile-odd-border);
+}
+
+figure.tile {
+  margin: 0;
+}
+
+.tile img {
+  position: absolute;
+  inset: 0;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+}
+
+.tile.has-img {
+  padding: 0;
+}
+
+/* Legenda sobre imagem: sempre texto branco sobre degradê azul-marinho,
+   em qualquer tema. */
+.tile.has-img .cap,
+.tile.has-img figcaption {
+  position: relative;
+
+  width: 100%;
+
+  padding: 44px 18px 18px;
+
+  background: linear-gradient(
+    transparent,
+    rgba(16, 33, 60, .88)
+  );
+
+  color: #FFFFFF;
+}
+
+
+/* =========================================================
+   14. FILTROS
+   ========================================================= */
+
+.fl {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.fl button {
+  padding: 8px 16px;
+
+  font: inherit;
+  font-size: .88rem;
+
+  border: 1px solid var(--line);
+  border-radius: 99px;
+
+  background: transparent;
+  color: var(--muted);
+
+  cursor: pointer;
+}
+
+.fl button.on {
+  background: var(--gold);
+
+  border-color: var(--gold);
+  color: #10213C;
+}
+
+.pg {
+  display: grid;
+
+  gap: 16px;
+
+  grid-template-columns:
+    repeat(auto-fill, minmax(min(190px, 100%), 1fr));
+
+  margin-top: 24px;
+}
+
+.pg .tile small {
+  display: block;
+  color: var(--gold-text);
+}
+
+.ttl {
+  display: block;
+
+  font: 500 1.3rem
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+}
+
+.ask {
+  display: block;
+
+  margin-top: 10px;
+
+  color: var(--gold-text);
+  font-size: .85rem;
+}
+
+
+/* =========================================================
+   15. CLIENTES E PARCEIROS
+   ========================================================= */
+
+.names {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  margin-top: 48px;
+
+  border-left: 1px solid var(--line);
+}
+
+.names span {
+  padding: 22px 24px;
+
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  border-top: 1px solid var(--line);
+
+  margin-top: -1px;
+
+  font-family:
+    "Cormorant Garamond",
+    serif;
+
+  font-size: 1.3rem;
+  color: var(--head);
+}
+
+
+/* =========================================================
+   16. FAIXA ANIMADA DE PARCEIROS
+   ========================================================= */
+
+.mq {
+  overflow: hidden;
+
+  margin-top: 48px;
+
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+
+  -webkit-mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+
+  mask-image: linear-gradient(
+    90deg,
+    transparent,
+    #000 8%,
+    #000 92%,
+    transparent
+  );
+}
+
+.trk {
+  display: flex;
+
+  width: max-content;
+
+  padding: 22px 0;
+
+  animation: mq 46s linear infinite;
+}
+
+.trk.r {
+  animation-direction: reverse;
+
+  border-top: 1px dashed var(--line);
+}
+
+.mq:hover .trk {
+  animation-play-state: paused;
+}
+
+.trk span {
+  display: flex;
+  align-items: center;
+
+  gap: 28px;
+  padding-left: 28px;
+
+  font: 500 clamp(1.5rem, 3.4vw, 2.4rem)
+    "Cormorant Garamond",
+    Georgia,
+    serif;
+
+  color: var(--head);
+  white-space: nowrap;
+
+  transition: color .25s ease;
+}
+
+.trk span::after {
+  content: "";
+
+  width: 34px;
+
+  border-top: 2px dashed var(--gold);
+}
+
+.trk span:hover {
+  color: var(--gold-text);
+}
+
+@keyframes mq {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+
+/* =========================================================
+   17. FORMULÁRIO
+   ========================================================= */
+
+form {
+  display: grid;
+
+  grid-template-columns:
+    repeat(2, minmax(0, 1fr));
+
+  gap: 24px 28px;
+
+  margin-top: 48px;
+}
+
+form .full {
+  grid-column: 1 / -1;
+}
+
+label {
+  display: grid;
+
+  gap: 6px;
+
+  font-size: .85rem;
+  color: var(--muted);
+}
+
+input,
+select,
+textarea {
+  width: 100%;
+  min-width: 0;
+
+  padding: 12px 0;
+
+  border: 0;
+  border-bottom: 1px solid var(--field-line);
+
+  border-radius: 0;
+
+  background: transparent;
+  color: var(--text);
+
+  font: inherit;
+  font-size: 1rem;
+
+  transition: border-color .2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-bottom-color: var(--gold-text);
+}
+
+input::placeholder,
+textarea::placeholder {
+  color: var(--muted);
+  opacity: .75;
+}
+
+select option {
+  background: var(--paper);
+  color: var(--text);
+}
+
+textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.err {
+  min-height: 1em;
+
+  color: #C0392B;
+  font-size: .82rem;
+}
+
+#ok {
+  display: none;
+
+  padding: 20px;
+
+  border: 1px solid var(--gold);
+
+  margin-top: 24px;
+}
+
+
+/* =========================================================
+   18. CONTACTOS
+   ========================================================= */
+
+.contact {
+  display: grid;
+
+  grid-template-columns:
+    repeat(3, minmax(0, 1fr));
+
+  gap: 56px;
+
+  margin-top: 48px;
+}
+
+.contact h3 {
+  margin-bottom: 8px;
+
+  font-size: 1.2rem;
+}
+
+.contact p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.contact a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.contact a:hover {
+  color: var(--gold-text);
+}
+
+
+/* =========================================================
+   19. RODAPÉ
+   ========================================================= */
+
+footer {
+  padding:
+    36px 0
+    calc(36px + env(safe-area-inset-bottom, 0px));
+
+  background: var(--dark);
+  color: var(--on-dark-muted);
+
+  /* No tema claro o rodapé é creme sobre creme: a linha separa-o do conteúdo. */
+  border-top: 1px solid var(--line);
+
+  font-size: .88rem;
+}
+
+
+/* =========================================================
+   20. BOTÃO WHATSAPP
+   ========================================================= */
+
+.wa {
+  position: fixed;
+
+  right: 18px;
+  bottom: calc(18px + env(safe-area-inset-bottom, 0px));
+
+  z-index: 25;
+
+  padding: 13px 22px;
+
+  background: var(--gold);
+  color: #10213C;
+
+  border-radius: 99px;
+
+  font-size: .9rem;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  box-shadow:
+    0 6px 24px rgba(16, 33, 60, .25);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.wa:hover {
+  transform: translateY(-3px);
+
+  box-shadow:
+    0 9px 28px rgba(16, 33, 60, .3);
+}
+
+
+/* =========================================================
+   21. TABLETS E ECRÃS MÉDIOS
+   ========================================================= */
+
+@media (max-width: 860px) {
+
+  section {
+    padding: 76px 0;
+  }
+
+  .hero {
+    padding: 130px 0 110px;
+
+    /* Tablet e telemóvel: o hero fica mais alto que largo, então o
+       "cover" corta os lados. Enquadra mais à direita, onde o
+       degradê escuro deixa a imagem aparecer. */
+    background-image:
+      var(--hero-overlay-sm),
+      var(--hero-img);
+
+    background-position:
+      center,
+      70% center;
+  }
+
+  /* Ecrãs pequenos: a imagem é muito recortada e o texto ocupa a
+     largura toda, então o véu fica mais denso. */
+  html::before {
+    background-image: var(--page-img-sm);
+  }
+
+  #menu {
+    display: block;
+  }
+
+  nav {
+    display: none;
+
+    position: absolute;
+
+    top: 72px;
+    left: 0;
+    right: 0;
+
+    max-height: calc(
+      100vh - 72px - env(safe-area-inset-top, 0px)
+    );
+
+    overflow-y: auto;
+
+    background: var(--bg);
+
+    border-bottom: 1px solid var(--line);
+
+    flex-direction: column;
+    align-items: center;
+
+    padding: 20px 24px 28px;
+
+    gap: 16px;
+  }
+
+  @supports (height: 100dvh) {
+    nav {
+      max-height: calc(
+        100dvh - 72px - env(safe-area-inset-top, 0px)
+      );
+    }
+  }
+
+  nav.open {
+    display: flex;
+  }
+
+  .split,
+  .contact {
+    grid-template-columns: 1fr;
+    gap: 36px;
+  }
+
+  .row {
+    grid-template-columns: 1fr;
+    gap: 6px;
+  }
+
+  .row:hover {
+    padding-left: 0;
+  }
+
+  .gal {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .names {
+    grid-template-columns: 1fr;
+  }
+
+  form {
+    grid-template-columns: 1fr;
+  }
+
+  form .full {
+    grid-column: auto;
+  }
+}
+
+
+/* =========================================================
+   21B. GALERIA DE ARTE: "VER MAIS" EM ECRÃS PEQUENOS
+   (controlado pelo bloco no js/main.js)
+   ========================================================= */
+
+.gal-more {
+  display: none;
+
+  margin-top: 28px;
+  text-align: center;
+}
+
+@media (max-width: 860px) {
+
+  .gal-more {
+    display: block;
+  }
+
+  .gal-more.vazio {
+    display: none;
+  }
+
+  /* 2 colunas: 4 obras = 2 linhas */
+  #arte {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  /* Pré-visualização: só as 4 primeiras até carregar em "Ver mais" */
+  #arte:not(.aberta) .extra {
+    display: none;
+  }
+}
+
+
+/* =========================================================
+   22. TELEMÓVEIS
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  .wrap {
+    padding-left: 18px;
+    padding-right: 18px;
+  }
+
+  section {
+    padding: 64px 0;
+  }
+
+  .hero {
+    padding: 100px 0;
+
+    background-position:
+      center,
+      75% center;
+  }
+
+  .hero h1 {
+    font-size: clamp(2.8rem, 12vw, 4rem);
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .hero .acts {
+    gap: 10px;
+  }
+
+  .btn {
+    padding: 12px 20px;
+  }
+
+  .gal {
+    gap: 10px;
+  }
+
+  .tile {
+    padding: 12px;
+  }
+
+  .names span {
+    padding: 18px;
+  }
+
+  .wa {
+    right: 12px;
+
+    bottom:
+      calc(12px + env(safe-area-inset-bottom, 0px));
+  }
+}
+
+
+/* =========================================================
+   23. MOVIMENTO REDUZIDO
+   (as antigas secções 23 e 24, de tema claro automático e
+   manual, foram removidas: o tema claro agora vive nas
+   variáveis de :root)
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+
+    transition-duration: .01ms !important;
+
+    scroll-behavior: auto !important;
+
+  }
+
+}
