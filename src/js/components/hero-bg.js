@@ -1,11 +1,11 @@
 // Fundo do hero que alterna entre imagens com fade.
-// Troque a lista pelos ficheiros que existem em img/.
+// Só usa as imagens que realmente carregam: se uma não existir, é ignorada.
 const IMAGENS = [
-  "img/Background/Vestimenta.jpg",
-  "img/Background/Background1.jpg",
+  "img/Background/Background4.jpg",
   "img/Background/Background2.jpg",
   "img/Background/Background3.jpg",
-  "img/Background/Background4.jpg"
+  "img/Background/Background1.jpg"
+  // "img/Background/f.jpg"   // tire as barras para incluir esta imagem
 ];
 const INTERVALO = 7000; // ms entre trocas
 
@@ -20,12 +20,11 @@ function carregar(src) {
 
 export async function initHeroBg() {
   const hero = document.getElementById("inicio");
-  if (!hero || IMAGENS.length < 2) return;
+  if (!hero) return;
 
-  // Respeita "movimento reduzido": mantém o fundo estático do CSS
+  // Respeita "movimento reduzido": fica o fundo estático do CSS (--hero-img)
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-  // Só usa as imagens que realmente carregam
   const ok = (await Promise.all(IMAGENS.map(carregar))).filter(Boolean);
   if (ok.length < 2) return;
 

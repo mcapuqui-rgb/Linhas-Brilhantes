@@ -9,12 +9,18 @@ import { renderCatalogo } from "./components/catalogo.js";
 import { renderPortefolio } from "./components/portefolio.js";
 import { renderArte } from "./components/arte.js";
 import { renderClientes } from "./components/clientes.js";
+import { initBgVeil } from "./components/bg-veil.js";
 
 initMenu();
 fillProvincias();
 initHero();
 initHeroBg();
 initForm();
+initBgVeil({ delay: 500 });
+// Fundo: ao abrir, as imagens aparecem sem véu. Passados ESPERA ms
+// (contados depois de a página carregar), a classe "bg-calmo" sobe o véu.
+// O CSS faz a transição (ver --veil-time e html::after no styles.css).
+
 
 // Galeria de arte: pré-visualização de 4 obras com botão "Ver mais".
 // Fica antes do await para ficar sempre ligado, mesmo que o catálogo demore ou falhe.

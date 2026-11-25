@@ -8,6 +8,14 @@
    regras próprias por tema, o que evita conflitos de
    especificidade entre o claro automático e o manual.
 
+   Efeito de abertura (precisa do JS que põe a classe
+   "bg-calmo" no <html> 3 s depois de abrir a página):
+   - Ao abrir, as imagens de fundo aparecem sem véu.
+   - Passados 3 s, o véu sobe aos poucos até ao nível final.
+   - Véu da página: secção 3 (html::after) e variáveis
+     --page-veil / --page-veil-sm da secção 1.
+   - Véu do hero: secção 8B (.hero-slides::after).
+
    Alterações acrescentadas:
    - Secção 8B: fundo do hero com troca de imagens (fade)
    - Secção 21B: galeria de arte com "Ver mais" em ecrãs pequenos
@@ -44,13 +52,16 @@
   --ghost-color: #10213C;
   --ghost-hover: var(--gold-text);
 
-  /* Fundo da página (imagem sob um véu creme) */
-  --page-img:
-    linear-gradient(rgba(251, 250, 247, .95), rgba(251, 250, 247, 0.39)),
-    url("../img/Background/Background3.jpg");
-  --page-img-sm:
-    linear-gradient(rgba(251, 250, 247, 0.26), rgba(251, 250, 247, 0.233)),
-    url("../img/Background/Background3.jpg");
+  /* Fundo da página: a imagem e o véu são separados.
+     --page-veil    = véu final em computador (sobe 3 s depois de abrir)
+     --page-veil-sm = véu final em ecrãs até 860px
+     Para ver menos a imagem no fim, aumente os números (0 a 1). */
+  --page-img: url("../img/Background/Background3.jpg");
+  --page-veil:    linear-gradient(rgba(251, 250, 247, .95), rgba(251, 250, 247, 0.904));
+  --page-veil-sm: linear-gradient(rgba(251, 250, 247, 0.808), rgba(255, 255, 255, 0.856));
+
+  /* Duração da subida do véu (vale para a página e para o hero) */
+  --veil-time: 2.5s;
 
   /* Hero */
   --hero-img: url(../img/Background/Background3.jpg);
@@ -102,12 +113,9 @@
     --ghost-color: #FFFFFF;
     --ghost-hover: #C49A50;
 
-    --page-img:
-      linear-gradient(#10213C, rgba(0, 0, 0, .863)),
-      url("../img/Background/Background3.jpg");
-    --page-img-sm:
-      linear-gradient(rgba(16, 33, 60, .96), rgba(0, 0, 0, .93)),
-      url("../img/Background/Background3.jpg");
+    --page-img: url("../img/Background/Background3.jpg");
+    --page-veil:    linear-gradient(#10213C, rgba(0, 0, 0, .863));
+    --page-veil-sm: linear-gradient(rgba(16, 33, 60, .96), rgba(0, 0, 0, .93));
 
     --hero-img: url(../img/Background/Background3.jpg);
     --hero-overlay: linear-gradient(
@@ -151,12 +159,9 @@
   --ghost-color: #FFFFFF;
   --ghost-hover: #C49A50;
 
-  --page-img:
-    linear-gradient(#10213C, rgba(0, 0, 0, .863)),
-    url("../img/Background/Background3.jpg");
-  --page-img-sm:
-    linear-gradient(rgba(16, 33, 60, .96), rgba(0, 0, 0, .93)),
-    url("../img/Background/Background3.jpg");
+  --page-img: url("../img/Background/Background3.jpg");
+  --page-veil:    linear-gradient(#10213C, rgba(0, 0, 0, .863));
+  --page-veil-sm: linear-gradient(rgba(16, 33, 60, .96), rgba(0, 0, 0, .93));
 
   --hero-img: url(../img/Background/Background3.jpg);
   --hero-overlay: linear-gradient(
@@ -241,7 +246,8 @@ html {
 
 /* Imagem de fundo da página numa camada fixa atrás do conteúdo.
    "background-attachment: fixed" não funciona no iOS e, com "scroll",
-   o "cover" esticaria a imagem pela altura total da página. */
+   o "cover" esticaria a imagem pela altura total da página.
+   Aqui vai só a imagem, sem véu: ao abrir, vê-se por inteiro. */
 html::before {
   content: "";
 
@@ -255,6 +261,37 @@ html::before {
   background-repeat: no-repeat;
 
   pointer-events: none;
+}
+
+/* Véu da página, por cima da imagem. Começa transparente e,
+   quando o JS põe "bg-calmo" no <html> (3 s depois de abrir),
+   sobe aos poucos até ao nível final definido em --page-veil. */
+html::after {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+
+  background: var(--page-veil);
+  opacity: 0;
+  transition: opacity var(--veil-time) ease;
+
+  pointer-events: none;
+}
+
+html.bg-calmo::after {
+  opacity: 1;
+}
+
+@media (max-width: 860px) {
+  html::after {
+    background: var(--page-veil-sm);
+  }
+
+  html::before {
+    background-image: url("../img/Background/Background3_mobile.jpg");
+  }
 }
 
 body {
@@ -722,7 +759,11 @@ nav a:not(.btn):hover::after {
   opacity: 1;
 }
 
-/* Véu do tema por cima das imagens (o mesmo que o hero usa) */
+/* Véu do tema por cima das imagens do hero.
+   Começa transparente (imagens por inteiro) e sobe quando o JS
+   põe "bg-calmo" no <html>, junto com o véu da página.
+   Para o hero ter o véu desde o início, apague as 3 linhas
+   marcadas com (*) e o bloco "html.bg-calmo .hero-slides::after". */
 .hero-slides::after {
   content: "";
 
@@ -730,6 +771,13 @@ nav a:not(.btn):hover::after {
   inset: 0;
 
   background-image: var(--hero-overlay);
+
+  opacity: 0;                                   /* (*) */
+  transition: opacity var(--veil-time) ease;    /* (*) */
+}
+
+html.bg-calmo .hero-slides::after {
+  opacity: 1;                                   /* (*) */
 }
 
 /* Conteúdo e linhas do hero ficam acima do fundo */
@@ -1410,12 +1458,6 @@ footer {
       70% center;
   }
 
-  /* Ecrãs pequenos: a imagem é muito recortada e o texto ocupa a
-     largura toda, então o véu fica mais denso. */
-  html::before {
-    background-image: var(--page-img-sm);
-  }
-
   #menu {
     display: block;
   }
@@ -1614,3 +1656,4 @@ footer {
   }
 
 }
+
