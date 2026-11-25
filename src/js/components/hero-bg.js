@@ -1,7 +1,7 @@
 // Fundo do hero que alterna entre imagens com fade.
 // Troque a lista pelos ficheiros que existem em img/.
 const IMAGENS = [
-  "img/Background/Background.jpg",
+  "img/Background/Vestimenta.jpg",
   "img/Background/Background1.jpg",
   "img/Background/Background2.jpg",
   "img/Background/Background3.jpg",

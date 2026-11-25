@@ -46,14 +46,14 @@
 
   /* Fundo da página (imagem sob um véu creme) */
   --page-img:
-    linear-gradient(rgba(251, 250, 247, .95), rgba(251, 250, 247, .95)),
-    url("../img/Background/Background.jpg");
+    linear-gradient(rgba(251, 250, 247, .95), rgba(251, 250, 247, 0.39)),
+    url("../img/Background/Background3.jpg");
   --page-img-sm:
-    linear-gradient(rgba(251, 250, 247, .97), rgba(251, 250, 247, .97)),
-    url("../img/Background/Background.jpg");
+    linear-gradient(rgba(251, 250, 247, 0.26), rgba(251, 250, 247, 0.233)),
+    url("../img/Background/Background3.jpg");
 
   /* Hero */
-  --hero-img: url(../img/Background/Background.jpg);
+  --hero-img: url(../img/Background/Background3.jpg);
   --hero-overlay: linear-gradient(
     90deg,
     rgb(255, 255, 255),
@@ -61,13 +61,13 @@
   );
   /* Em ecrãs estreitos o texto ocupa a largura toda: véu uniforme */
   --hero-overlay-sm: linear-gradient(
-    rgba(255, 255, 255, .88),
+    rgba(255, 255, 255, 0.363),
     rgba(255, 255, 255, .72)
   );
 
   /* Parágrafo do hero */
   
-  --hero-p-color: #000000;
+  --hero-p-color: #10213C;
   
 
   box-sizing: border-box;
@@ -104,12 +104,12 @@
 
     --page-img:
       linear-gradient(#10213C, rgba(0, 0, 0, .863)),
-      url("../img/Background/Background.jpg");
+      url("../img/Background/Background3.jpg");
     --page-img-sm:
       linear-gradient(rgba(16, 33, 60, .96), rgba(0, 0, 0, .93)),
-      url("../img/Background/Background.jpg");
+      url("../img/Background/Background3.jpg");
 
-    --hero-img: url(../img/Background/Background.jpg);
+    --hero-img: url(../img/Background/Background3.jpg);
     --hero-overlay: linear-gradient(
       90deg,
       rgb(0, 0, 0),
@@ -153,12 +153,12 @@
 
   --page-img:
     linear-gradient(#10213C, rgba(0, 0, 0, .863)),
-    url("../img/Background/Background.jpg");
+    url("../img/Background/Background3.jpg");
   --page-img-sm:
     linear-gradient(rgba(16, 33, 60, .96), rgba(0, 0, 0, .93)),
-    url("../img/Background/Background.jpg");
+    url("../img/Background/Background3.jpg");
 
-  --hero-img: url(../img/Background/Background.jpg);
+  --hero-img: url(../img/Background/Background3.jpg);
   --hero-overlay: linear-gradient(
     90deg,
     rgb(0, 0, 0),
