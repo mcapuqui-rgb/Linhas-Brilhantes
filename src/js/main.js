@@ -1,6 +1,7 @@
 // Arranque: liga os componentes e desenha o conteúdo vindo dos dados.
 import { getCatalogo } from "./core/api.js";
 import { initMenu } from "./components/menu.js";
+import { initSecoes } from "./components/secoes.js";
 import { initHero } from "./components/hero.js";
 import { initHeroBg } from "./components/hero-bg.js";
 import { initForm } from "./components/orcamento.js";
@@ -12,6 +13,7 @@ import { renderClientes } from "./components/clientes.js";
 import { initBgVeil } from "./components/bg-veil.js";
 
 initMenu();
+initSecoes();
 fillProvincias();
 initHero();
 initHeroBg();
