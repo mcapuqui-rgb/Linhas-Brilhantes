@@ -2,6 +2,7 @@
 import { getCatalogo } from "./core/api.js";
 import { initMenu } from "./components/menu.js";
 import { initSecoes } from "./components/secoes.js";
+import { initProgresso } from "./components/progresso.js";
 import { initHero } from "./components/hero.js";
 import { initHeroBg } from "./components/hero-bg.js";
 import { initForm } from "./components/orcamento.js";
@@ -15,6 +16,7 @@ import { initCards, atualizarCards } from "./components/cards.js";
 
 initMenu();
 initSecoes();
+initProgresso();
 fillProvincias();
 initHero();
 initHeroBg();

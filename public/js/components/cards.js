@@ -121,13 +121,29 @@ function ligarCards(raiz) {
 }
 
 // ---------- "Ver mais" ----------
+// Em ecrãs pequenos mostra N cards; cada clique em "Ver mais" revela mais N.
+// Quando já estão todos visíveis, o botão passa a "Ver menos" e volta aos N iniciais.
+
+const CARDS = ":scope > .tile, :scope > .row";
+
+function limiteDe(grid) {
+  return parseInt(grid.dataset.vermais, 10) || 4;
+}
+
+function aplicarLimite(grid, box) {
+  const limite = limiteDe(grid);
+  const itens = [...grid.querySelectorAll(CARDS)];
+  const n = Math.max(limite, parseInt(grid.dataset.mostrar, 10) || limite);
+  itens.forEach((c, i) => c.classList.toggle("extra", i >= n));
+
+  const btn = box.querySelector("button");
+  btn.textContent = n >= itens.length ? "Ver menos" : "Ver mais";
+  btn.setAttribute("aria-expanded", String(n > limite));
+  box.classList.toggle("vazio", itens.length <= limite);
+}
 
 function ligarVerMais(raiz) {
   raiz.querySelectorAll("[data-vermais]").forEach((grid) => {
-    const limite = parseInt(grid.dataset.vermais, 10) || 4;
-    const itens = [...grid.querySelectorAll(":scope > .tile")];
-    itens.forEach((c, i) => c.classList.toggle("extra", i >= limite));
-
     // Reaproveita um .gal-more que já esteja a seguir à grelha; senão cria um
     let box = grid.nextElementSibling;
     if (!box || !box.classList.contains("gal-more")) {
@@ -137,19 +153,26 @@ function ligarVerMais(raiz) {
       box.appendChild(b);
       grid.after(box);
     }
-    const btn = box.querySelector("button");
     if (!grid.id) grid.id = "vm" + ++seq;
-    btn.setAttribute("aria-controls", grid.id);
-    if (!btn.hasAttribute("aria-expanded")) btn.setAttribute("aria-expanded", "false");
-    box.classList.toggle("vazio", itens.length <= limite);
+    box.querySelector("button").setAttribute("aria-controls", grid.id);
+
+    aplicarLimite(grid, box);
 
     if (box.dataset.ligado) return;
     box.dataset.ligado = "1";
-    btn.addEventListener("click", () => {
-      const aberta = grid.classList.toggle("aberta");
-      btn.textContent = aberta ? "Ver menos" : "Ver mais";
-      btn.setAttribute("aria-expanded", String(aberta));
-      if (!aberta) (grid.closest(".sec-grupo, section") || grid).scrollIntoView({ block: "start" });
+    box.querySelector("button").addEventListener("click", () => {
+      const limite = limiteDe(grid);
+      const total = grid.querySelectorAll(CARDS).length;
+      const n = Math.max(limite, parseInt(grid.dataset.mostrar, 10) || limite);
+
+      if (n >= total) {
+        grid.dataset.mostrar = String(limite);
+        aplicarLimite(grid, box);
+        (grid.closest(".sec-grupo, section") || grid).scrollIntoView({ block: "start" });
+      } else {
+        grid.dataset.mostrar = String(n + limite);
+        aplicarLimite(grid, box);
+      }
     });
   });
 }

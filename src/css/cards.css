@@ -173,12 +173,12 @@ html.modal-aberto {
 /* Ecrãs pequenos: 2 colunas e só os primeiros cards até carregar em "Ver mais" */
 @media (max-width: 860px) {
 
-  [data-vermais] {
+  [data-vermais]:not(.index) {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 10px;
   }
 
-  [data-vermais]:not(.aberta) > .extra {
+  [data-vermais] > .extra {
     display: none;
   }
 
@@ -199,4 +199,25 @@ html.modal-aberto {
     margin: -7px 0 0 -4px;
     border-width: 7px 0 7px 12px;
   }
+}
+
+/* Linha de progresso da secção, dentro do .sec-card (criada por components/progresso.js).
+   Repete a regra da secção 25, para funcionar mesmo que essa não exista. */
+.sec-prog {
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+
+  width: 100%;
+  height: 2px;
+  margin: 0;
+
+  background: var(--gold);
+  border: 0;
+
+  transform: scaleX(var(--p, 0));
+  transform-origin: left;
+  will-change: transform;
+
+  pointer-events: none;
 }
