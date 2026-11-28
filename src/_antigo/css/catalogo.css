@@ -1,6 +1,0 @@
-/* Produtos e serviços */
-.index{margin-top:56px;border-bottom:1px solid var(--line)}
-.row{display:grid;grid-template-columns:1fr 1.5fr auto;gap:32px;align-items:baseline;padding:28px 0;border-top:1px solid var(--line);transition:padding-left .25s}
-.row:hover{padding-left:12px}
-.row p{margin:0;color:var(--muted);font-size:.97rem}
-.row a{font-size:.9rem;color:var(--gold);text-decoration:none;font-weight:500}

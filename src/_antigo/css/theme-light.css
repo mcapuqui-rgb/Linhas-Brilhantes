@@ -1,9 +1,0 @@
-/* Tema claro (segue o dispositivo) */
-@media (prefers-color-scheme:light){
-:root{--bg:#FBFAF7;--paper:#FFFFFF;--text:#252A32;--muted:#68707d;--line:#e6e1d5;--head:#10213C;--navy:#10213C;--dark:#F1ECE0}
-.hero,.cover,footer{color:#252A32}
-.hero h1,.cover h2{color:#10213C}
-.hero p,.cover .lead,footer{color:#5d6572}
-.hero .btn:not(.gold),.cover .btn:not(.gold){border-color:#10213C!important;color:#10213C!important}
-.tile:nth-child(odd){color:#5d6572}
-}

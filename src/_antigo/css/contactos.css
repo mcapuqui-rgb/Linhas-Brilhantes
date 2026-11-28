@@ -1,5 +1,0 @@
-/* Contactos */
-.contact{display:grid;gap:56px;grid-template-columns:repeat(3,1fr);margin-top:48px}
-.contact h3{font-size:1.2rem;margin-bottom:8px}
-.contact p{margin:0;color:var(--muted)}
-.contact a{text-decoration:none;color:var(--text)}

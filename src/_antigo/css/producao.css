@@ -1,6 +1,0 @@
-/* Produção */
-.steps{list-style:none;margin:0;padding:0;counter-reset:s}
-.steps li{counter-increment:s;display:grid;grid-template-columns:48px 1fr;padding:22px 0;border-top:1px solid var(--line)}
-.steps li:last-child{border-bottom:1px solid var(--line)}
-.steps li::before{content:counter(s,decimal-leading-zero);font:500 1.3rem "Cormorant Garamond",serif;color:var(--gold)}
-.steps span{color:var(--muted)}

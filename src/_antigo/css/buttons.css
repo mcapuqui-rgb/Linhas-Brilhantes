@@ -1,7 +1,0 @@
-/* Botões */
-.btn{display:inline-block;background:var(--navy);color:#fff;font:500 .95rem "Hanken Grotesk",sans-serif;padding:14px 28px;border-radius:2px;text-decoration:none;border:1px solid var(--navy);cursor:pointer;transition:background .2s,color .2s}
-.btn:hover{background:transparent;color:var(--head)}
-.btn.gold{background:var(--gold);border-color:var(--gold);color:#10213C}
-.btn.gold:hover{background:transparent;color:var(--gold)}
-nav .btn{padding:10px 20px;color:#fff}
-nav .btn:hover{color:var(--head)}

@@ -1,7 +1,0 @@
-/* Grelhas e blocos comuns */
-.split{display:grid;gap:72px;grid-template-columns:1fr 1.2fr;align-items:start}
-.paper{background:var(--paper);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-.note{font-size:.88rem;color:var(--muted);margin-top:28px;max-width:64ch}
-.cover{background:var(--dark);color:#fff}
-.cover h2{color:#fff}
-.cover .lead{color:#b9c0cd}

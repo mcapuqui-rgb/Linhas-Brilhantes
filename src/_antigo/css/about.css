@@ -1,5 +1,0 @@
-/* Sobre nós */
-.pillars{display:grid;gap:0}
-.pillars div{padding:26px 0;border-top:1px solid var(--line)}
-.pillars div:last-child{border-bottom:1px solid var(--line)}
-.pillars p{margin:8px 0 0;color:var(--muted)}

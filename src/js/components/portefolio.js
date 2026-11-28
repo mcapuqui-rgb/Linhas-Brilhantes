@@ -1,22 +1,23 @@
 // Portefólio: filtros por categoria e subcategoria.
 import { $, esc } from "../core/dom.js";
 import { atualizarCards } from "./cards.js";
+import { ehVideo, renderVideoDestaque } from "./video-destaque.js";
 
 export function renderPortefolio(d) {
   const box = $("pf");
   let cat = null, sub = null;
+  // O vídeo do portefólio fica a toda a largura no topo, fora dos filtros
+  const v = (d.fotos || []).find(ehVideo);
+  renderVideoDestaque(box, v && { video: v.video, capa: v.poster || v.imagem, titulo: v.legenda });
   const btn = (a, v, t, on) => `<button data-${a}="${esc(v)}" class="${on ? "on" : ""}">${esc(t)}</button>`;
   const tiles = (s, k) => {
-    const fs = (d.fotos || []).filter((f) => f.subcategoria === s.id);
+    const fs = (d.fotos || []).filter((f) => f.subcategoria === s.id && !ehVideo(f));
     return fs.length
       ? fs.map((f) => {
           const leg = f.legenda || s.nome;
-          const video = f.tipo === "video" || !!f.video;
-          const capa = f.poster || f.imagem || "";
-          const dados = `data-card data-titulo="${esc(leg)}" data-sub="${esc(k.nome)}" data-desc="${esc(f.descricao)}" data-img="${esc(f.imagem)}" data-cta="#orcamento"`
-            + (video ? ` data-video="${esc(f.video)}" data-poster="${esc(capa)}"` : "");
-          const img = capa ? `<img loading="lazy" src="${esc(capa)}" alt="${esc(leg)}">` : "";
-          return `<figure class="tile${capa ? " has-img" : ""}${video ? " tile-video" : ""}" ${dados}>${img}${video ? '<span class="play" aria-hidden="true"></span>' : ""}<figcaption>${esc(leg)}</figcaption></figure>`;
+          const dados = `data-card data-titulo="${esc(leg)}" data-sub="${esc(k.nome)}" data-desc="${esc(f.descricao)}" data-img="${esc(f.imagem)}" data-cta="#orcamento"`;
+          const img = f.imagem ? `<img loading="lazy" src="${esc(f.imagem)}" alt="${esc(leg)}">` : "";
+          return `<figure class="tile${f.imagem ? " has-img" : ""}" ${dados}>${img}<figcaption>${esc(leg)}</figcaption></figure>`;
         }).join("")
       : `<div class="tile" data-card data-titulo="${esc(s.nome)}" data-sub="${esc(k.nome)}" data-cta="#orcamento"><span>${esc(s.nome)}<small>${esc(k.nome)}</small></span></div>`;
   };

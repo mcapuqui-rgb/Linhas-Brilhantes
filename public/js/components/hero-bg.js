@@ -1,10 +1,10 @@
 // Fundo do hero que alterna entre imagens com fade.
 // Só usa as imagens que realmente carregam: se uma não existir, é ignorada.
 const IMAGENS = [
-  "img/Background/Background4.jpg",
-  "img/Background/Background2.jpg",
-  "img/Background/Background3.jpg",
-  "img/Background/Background1.jpg"
+  "img/Background/Background4.webp",
+  "img/Background/Background2.webp",
+  "img/Background/Background3.webp",
+  "img/Background/Background1.webp"
   // "img/Background/f.jpg"   // tire as barras para incluir esta imagem
 ];
 const INTERVALO = 7000; // ms entre trocas

@@ -168,53 +168,62 @@
       "marca": "Marca",
       "imagem": "",
       "descricao": ""
-    }
+    },
+    {
+  "id": 1,
+  "nome": "Nome da obra 1",
+  "marca": "Marca",
+  "tipo": "video",
+  "video": "img/videos/video.mp4",
+  "descricao": ""
+}
+    
   ],
   "clientes": [
     {
       "id": 1,
       "nome": "Instituto Politécnico Maravilha",
-      "logo": "img/clientes/Maravilha.png"
+      "logo": "img/clientes/Maravilha.webp"
     },
     {
       "id": 2,
       "nome": "Colégio Pitágora",
-      "logo": "img/clientes/Pitagoras.png"
+      "logo": "img/clientes/Pitagoras.webp"
     },
     {
       "id": 3,
       "nome": "Colégio 11 de Novembro",
-      "logo": "img/clientes/11deNovembro.png"
+      "logo": "img/clientes/11deNovembro.webp"
     },
     {
       "id": 4,
       "nome": "Instituto Técnico de Saúde Privado Canácio-Kopitule",
-      "logo": "img/clientes/Canagito.png"
+      "logo": "img/clientes/Canagito.webp"
     },
     {
       "id": 5,
       "nome": "N.G.S. Vombilados",
-      "logo": "img/clientes/VQ.png"
+      "logo": "img/clientes/VQ.webp"
     },
     {
       "id": 6,
       "nome": "Nyamba",
-      "logo": "img/clientes/Ntyamba.png"
+      "logo": "img/clientes/Ntyamba.webp"
     },
     {
       "id": 7,
       "nome": "Kuc-Lessa",
-      "logo": "img/clientes/Kucolessa.png"
+      "logo": "img/clientes/Kucolessa.webp"
     },
     {
       "id": 8,
       "nome": "Suloil Transportes, Lda.",
-      "logo": "img/clientes/Suloil.png"
+      "logo": "img/clientes/Suloil.webp"
     },
     {
       "id": 9,
       "nome": "T.P. Okupanga",
-      "logo": "img/clientes/Okupanga.png"
+      "logo": "img/clientes/Okupanga.webp"
     }
   ]
 }

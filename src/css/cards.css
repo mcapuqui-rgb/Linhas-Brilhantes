@@ -234,3 +234,29 @@ html.modal-aberto {
 .gal-more.sempre.vazio {
   display: none;
 }
+
+/* Vídeo da secção: 1 só, a toda a largura, por cima da grelha de imagens */
+.video-destaque {
+  grid-column: 1 / -1; /* no portefólio está dentro de uma grelha de 4 colunas */
+  margin: 32px 0 24px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+}
+
+.video-destaque video {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  max-height: 80vh;
+  background: #000;
+  object-fit: contain;
+}
+
+.video-destaque figcaption {
+  padding: 16px 18px 18px;
+}
+
+.video-destaque figcaption small {
+  display: block;
+  color: var(--gold-text);
+}
