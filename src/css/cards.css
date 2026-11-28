@@ -221,3 +221,16 @@ html.modal-aberto {
 
   pointer-events: none;
 }
+
+/* Grelhas limitadas a N linhas (data-linhas): escondem o excedente em qualquer ecrã */
+[data-linhas] > .extra {
+  display: none;
+}
+
+.gal-more.sempre {
+  display: block;
+}
+
+.gal-more.sempre.vazio {
+  display: none;
+}

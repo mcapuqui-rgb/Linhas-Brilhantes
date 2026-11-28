@@ -1782,3 +1782,6 @@ footer {
     padding-bottom: 64px;
   }
 }
+
+/* Cards ampliados e "Ver mais" */
+@import "cards.css";

@@ -6,6 +6,7 @@
 //   <div class="tile" data-card data-titulo="..." data-sub="..." data-desc="..."
 //        data-img="..." data-video="..." data-poster="..." data-wa="..." data-cta="#orcamento">
 // Como marcar uma grelha com limite:  <div data-vermais="4"> ...cards... </div>
+//   ou, para N linhas em qualquer ecrã:  <div data-vermais="4" data-linhas="2"> ... </div>
 
 let dlg = null;
 let ultimo = null;
@@ -127,6 +128,14 @@ function ligarCards(raiz) {
 const CARDS = ":scope > .tile, :scope > .row";
 
 function limiteDe(grid) {
+  // data-linhas="2": o limite são N linhas completas, seja qual for o nº de colunas
+  // (a grelha muda de 5 para 2 colunas conforme o ecrã). Sem isso, usa data-vermais.
+  const linhas = parseInt(grid.dataset.linhas, 10);
+  if (linhas) {
+    const t = getComputedStyle(grid).gridTemplateColumns;
+    const cols = t && t !== "none" ? t.trim().split(/\s+/).length : 0;
+    if (cols) return cols * linhas;
+  }
   return parseInt(grid.dataset.vermais, 10) || 4;
 }
 
@@ -153,6 +162,7 @@ function ligarVerMais(raiz) {
       box.appendChild(b);
       grid.after(box);
     }
+    if (grid.dataset.linhas) box.classList.add("sempre"); // botão também em ecrãs grandes
     if (!grid.id) grid.id = "vm" + ++seq;
     box.querySelector("button").setAttribute("aria-controls", grid.id);
 
@@ -200,6 +210,13 @@ export function initCards() {
       e.preventDefault();
       abrir(c);
     }
+  });
+
+  // Ao mudar o tamanho da janela o nº de colunas muda, por isso recalcula as linhas
+  let t;
+  window.addEventListener("resize", () => {
+    clearTimeout(t);
+    t = setTimeout(() => ligarVerMais(document), 120);
   });
 
   atualizarCards();

@@ -6,6 +6,7 @@ import { $, esc } from "../core/dom.js";
 export function renderArte(d) {
   const box = $("arte");
   box.dataset.vermais = box.dataset.vermais || "4";
+  box.dataset.linhas = box.dataset.linhas || "2";
   box.innerHTML = d.obras.map((o) => {
     const msg = `Olá! Tenho interesse na obra “${o.nome}” (marca ${o.marca}) da galeria de arte. Podem informar-me sobre a compra ou o aluguer?`;
     const wa = `https://wa.me/${CONFIG.whatsapp}?text=${encodeURIComponent(msg)}`;

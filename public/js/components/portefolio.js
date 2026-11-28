@@ -24,7 +24,7 @@ export function renderPortefolio(d) {
     let h = `<div class="fl">${btn("k", "", "Todos", cat === null)}${d.categorias.map((k) => btn("k", k.id, k.nome, cat === k.id)).join("")}</div>`;
     const cur = d.categorias.find((k) => k.id === cat);
     if (cur) h += `<div class="fl">${btn("s", "", "Todas", sub === null)}${cur.subcategorias.map((s) => btn("s", s.id, s.nome, sub === s.id)).join("")}</div>`;
-    h += '<div class="pg" data-vermais="4">';
+    h += '<div class="pg" data-vermais="4" data-linhas="2">';
     d.categorias.forEach((k) => {
       if (cat && cat !== k.id) return;
       k.subcategorias.forEach((s) => { if (!sub || sub === s.id) h += tiles(s, k); });
@@ -33,7 +33,7 @@ export function renderPortefolio(d) {
     atualizarCards(box);
   };
   box.addEventListener("click", (e) => {
-    const b = e.target.closest("button");
+    const b = e.target.closest("button[data-k], button[data-s]"); // ignora o botão "Ver mais"
     if (!b) return;
     if ("k" in b.dataset) { cat = b.dataset.k || null; sub = null; } else { sub = b.dataset.s || null; }
     draw();
