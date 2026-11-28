@@ -173,39 +173,48 @@
   "clientes": [
     {
       "id": 1,
-      "nome": "Instituto Politécnico Maravilha"
+      "nome": "Instituto Politécnico Maravilha",
+      "logo": "img/clientes/Maravilha.png"
     },
     {
       "id": 2,
-      "nome": "Colégio Pitágora"
+      "nome": "Colégio Pitágora",
+      "logo": "img/clientes/Pitagoras.png"
     },
     {
       "id": 3,
-      "nome": "Colégio 11 de Novembro"
+      "nome": "Colégio 11 de Novembro",
+      "logo": "img/clientes/11deNovembro.png"
     },
     {
       "id": 4,
-      "nome": "Instituto Técnico de Saúde Privado Canácio-Kopitule"
+      "nome": "Instituto Técnico de Saúde Privado Canácio-Kopitule",
+      "logo": "img/clientes/Canagito.png"
     },
     {
       "id": 5,
-      "nome": "N.G.S. Vombilados"
+      "nome": "N.G.S. Vombilados",
+      "logo": "img/clientes/VQ.png"
     },
     {
       "id": 6,
-      "nome": "Nyamba"
+      "nome": "Nyamba",
+      "logo": "img/clientes/Ntyamba.png"
     },
     {
       "id": 7,
-      "nome": "Kuc-Lessa"
+      "nome": "Kuc-Lessa",
+      "logo": "img/clientes/Kucolessa.png"
     },
     {
       "id": 8,
-      "nome": "Suloil Transportes, Lda."
+      "nome": "Suloil Transportes, Lda.",
+      "logo": "img/clientes/Suloil.jpg"
     },
     {
       "id": 9,
-      "nome": "T.P. Okupanga"
+      "nome": "T.P. Okupanga",
+      "logo": "img/clientes/Okupanga.png"
     }
   ]
 }

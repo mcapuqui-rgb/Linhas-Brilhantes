@@ -1240,9 +1240,9 @@ figure.tile {
 .trk span::after {
   content: "";
 
-  width: 34px;
+  width: 83px;
 
-  border-top: 2px dashed var(--gold);
+  border-top: 2px dashed rgba(255, 255, 255, 0);
 }
 
 .trk span:hover {
@@ -1253,6 +1253,24 @@ figure.tile {
   to {
     transform: translateX(-50%);
   }
+}
+
+/* Logos de clientes: cartão branco fixo, para se verem nos dois temas */
+.cli img {
+  display: block;
+  height: 200px;
+  width: auto;
+  max-width: 180px;
+  object-fit: contain;
+  padding: 10px 14px;
+  background: #ffffff00;
+  
+}
+
+.names .cli {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 
